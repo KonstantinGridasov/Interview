@@ -1,4 +1,4 @@
-package com.gkreduction.tradeconsolegames.di.scope
+package com.gkreduction.interview.di.scope
 
 import javax.inject.Scope
 

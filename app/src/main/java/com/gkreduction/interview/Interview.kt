@@ -1,6 +1,7 @@
 package com.gkreduction.interview
 
 import android.app.Application
+import com.gkreduction.interview.di.component.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
