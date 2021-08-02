@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gkreduction.interview.ui.main.MainViewModel
+import com.gkreduction.interview.ui.main.answer.AnswerFragment
+import com.gkreduction.interview.ui.main.answer.AnswerViewModel
 import com.gkreduction.interview.ui.main.category.CategoryFragment
 import com.gkreduction.interview.ui.main.category.CategoryViewModel
 import com.gkreduction.interview.ui.main.question.QuestionFragment
@@ -21,8 +23,8 @@ abstract class MainModule {
     @ContributesAndroidInjector
     internal abstract fun contributeQuestionFragment(): QuestionFragment
 
-//    @ContributesAndroidInjector
-//    internal abstract fun contributeAnswerFragment(): AnswerFragment
+    @ContributesAndroidInjector
+    internal abstract fun contributeAnswerFragment(): AnswerFragment
 
 
     companion object {
@@ -46,6 +48,10 @@ abstract class MainModule {
 
                         modelClass.isAssignableFrom(QuestionViewModel::class.java) ->
                             QuestionViewModel(
+                                app
+                            ) as T
+                        modelClass.isAssignableFrom(AnswerViewModel::class.java) ->
+                            AnswerViewModel(
                                 app
                             ) as T
 

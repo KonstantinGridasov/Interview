@@ -1,26 +1,54 @@
 package com.gkreduction.interview.ui.main.answer
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.gkreduction.interview.R
+import com.gkreduction.interview.databinding.FragmentAnswerBinding
+import com.gkreduction.interview.ui.main.MainActivity
+import com.gkreduction.interview.utils.lazyThreadSafetyNone
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class AnswerFragment : DaggerFragment() {
 
-//    override fun onCreateView(
-//            inflater: LayoutInflater, container: ViewGroup?,
-//            savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_answer, container, false)
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        view.findViewById<Button>(R.id.button_second).setOnClickListener {
-//            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-//        }
-//    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var binder: FragmentAnswerBinding
+
+    private val viewModel by lazyThreadSafetyNone {
+        activity?.let {
+            ViewModelProvider(
+                it,
+                viewModelFactory
+            ).get(AnswerViewModel::class.java)
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binder = DataBindingUtil.inflate(inflater, R.layout.fragment_answer, container, false)
+        binder.viewModel = viewModel
+        val args = AnswerFragmentArgs.fromBundle(requireArguments())
+        getAnswer(args.id)
+        return binder.root
+    }
+
+    private fun getAnswer(id: Int) {
+        activity?.let {
+            if (it is MainActivity)
+                viewModel!!.getAnswer(id, it.data!!)
+        }
+    }
+
 }

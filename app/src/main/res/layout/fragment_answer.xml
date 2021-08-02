@@ -7,11 +7,8 @@
 
         <variable
             name="viewModel"
-            type="com.gkreduction.interview.ui.main.category.CategoryViewModel" />
+            type="com.gkreduction.interview.ui.main.answer.AnswerViewModel" />
 
-        <variable
-            name="fragment"
-            type="com.gkreduction.interview.ui.main.category.CategoryFragment" />
     </data>
 
     <LinearLayout
@@ -23,6 +20,7 @@
             android:id="@+id/textAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.answer}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

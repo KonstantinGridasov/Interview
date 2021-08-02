@@ -14,6 +14,7 @@ import com.gkreduction.interview.databinding.FragmentCategoryBinding
 import com.gkreduction.interview.ui.main.MainActivity
 import com.gkreduction.interview.utils.lazyThreadSafetyNone
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_answer.view.*
 import javax.inject.Inject
 
 /**

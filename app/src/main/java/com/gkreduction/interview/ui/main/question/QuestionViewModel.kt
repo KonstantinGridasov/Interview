@@ -13,8 +13,6 @@ class QuestionViewModel(context: Context) :
     var question = ObservableArrayList<Question>()
 
     fun initQuestion(cat: String, list: List<DataInfo>) {
-        Log.e("initQuestion: ", cat)
-        Log.e("initQuestion: ", list.size.toString())
         list.sortedBy { it.id }
         val result = ArrayList<Question>()
         for (data in list)

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gkreduction.interview.R
 import com.gkreduction.interview.databinding.ItemCategoryBinding
 import com.gkreduction.interview.entity.Category
-import kotlinx.android.synthetic.main.item_list.view.*
-import java.util.*
+import kotlinx.android.synthetic.main.item_category.view.*
 
 class AdapterCategory(
     private var items: List<Category>,
