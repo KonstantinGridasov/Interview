@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.gkreduction.interview.ui.main.MainViewModel
 import com.gkreduction.interview.ui.main.category.CategoryFragment
 import com.gkreduction.interview.ui.main.category.CategoryViewModel
+import com.gkreduction.interview.ui.main.question.QuestionFragment
+import com.gkreduction.interview.ui.main.question.QuestionViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -16,9 +18,9 @@ abstract class MainModule {
     @ContributesAndroidInjector
     internal abstract fun contributeCategoryFragment(): CategoryFragment
 
-//    @ContributesAndroidInjector
-//    internal abstract fun contributeQuestionFragment(): QuestionFragment
-//
+    @ContributesAndroidInjector
+    internal abstract fun contributeQuestionFragment(): QuestionFragment
+
 //    @ContributesAndroidInjector
 //    internal abstract fun contributeAnswerFragment(): AnswerFragment
 
@@ -39,6 +41,11 @@ abstract class MainModule {
 
                         modelClass.isAssignableFrom(CategoryViewModel::class.java) ->
                             CategoryViewModel(
+                                app
+                            ) as T
+
+                        modelClass.isAssignableFrom(QuestionViewModel::class.java) ->
+                            QuestionViewModel(
                                 app
                             ) as T
 

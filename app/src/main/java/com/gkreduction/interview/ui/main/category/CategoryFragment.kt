@@ -46,6 +46,11 @@ class CategoryFragment : DaggerFragment() {
         return binder.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        initCat()
+    }
+
     private fun initCat() {
         activity?.let {
             viewModel!!.dataInfo.observe(it, Observer { list ->

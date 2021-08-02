@@ -1,4 +1,4 @@
-package com.gkreduction.interview.ui.main.category.adapter
+package com.gkreduction.interview.ui.main.question.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,22 +6,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gkreduction.interview.R
 import com.gkreduction.interview.databinding.ItemCategoryBinding
-import com.gkreduction.interview.entity.Category
+import com.gkreduction.interview.entity.Question
 import kotlinx.android.synthetic.main.item_list.view.*
-import java.util.*
 
-class AdapterCategory(
-    private var items: List<Category>,
+class QuestionAdapter(
+    private var items: List<Question>,
     private val listener: ListenerList?
-) : RecyclerView.Adapter<AdapterCategory.ViewHolder>() {
+) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
     interface ListenerList {
-        fun onCategoryClick(type: String)
+        fun onItemClick(id: Int)
     }
 
     inner class ViewHolder(val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            itemView.setOnClickListener { listener!!.onCategoryClick(items[adapterPosition].category) }
+            itemView.setOnClickListener { listener!!.onItemClick(items[adapterPosition].id) }
         }
     }
 
@@ -35,8 +34,7 @@ class AdapterCategory(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val text = "${items[position].id}. ${items[position].category}"
-        holder.itemView.textData.text = text
+        holder.itemView.textData.text = items[position].question
         holder.binding.executePendingBindings()
 
     }

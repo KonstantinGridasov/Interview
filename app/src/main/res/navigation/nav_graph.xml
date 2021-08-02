@@ -33,6 +33,8 @@
         android:name="com.gkreduction.interview.ui.main.answer.AnswerFragment"
         android:label="@string/answer_fragment"
         tools:layout="@layout/fragment_answer">
-
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>
