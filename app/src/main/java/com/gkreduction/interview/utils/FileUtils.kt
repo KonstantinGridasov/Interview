@@ -58,6 +58,7 @@ fun getPriority(cat: String): Int {
         "UML." -> return 16
         "XML." -> return 17
         "Test." -> return 18
+        "Android" -> return 19
         else -> 99
     }
 }

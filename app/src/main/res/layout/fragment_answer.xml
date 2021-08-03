@@ -5,41 +5,51 @@
 
     <data>
 
+        <import type="android.text.Html" />
+
         <variable
             name="viewModel"
             type="com.gkreduction.interview.ui.main.answer.AnswerViewModel" />
 
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.main.answer.AnswerFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.question}"
-            android:textSize="@dimen/_10gkdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_10gkdp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ui.main.answer.AnswerFragment">
 
-        <TextView
-            android:id="@+id/textAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.answer}"
-            android:textSize="@dimen/_10gkdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5gkdp"
+                android:text="@{viewModel.question}"
+                android:textSize="@dimen/_10gkdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10gkdp" />
+
+            <TextView
+                android:id="@+id/textAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5gkdp"
+                android:justificationMode="inter_word"
+                android:text="@{Html.fromHtml(viewModel.answer)}"
+                android:textSize="@dimen/_10gkdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </ScrollView>
 </layout>

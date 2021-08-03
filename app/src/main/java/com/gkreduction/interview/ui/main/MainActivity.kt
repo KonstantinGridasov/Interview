@@ -1,11 +1,9 @@
 package com.gkreduction.interview.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Window.FEATURE_NO_TITLE
 import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
