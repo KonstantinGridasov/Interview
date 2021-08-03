@@ -14,7 +14,6 @@ import com.gkreduction.interview.databinding.FragmentCategoryBinding
 import com.gkreduction.interview.ui.main.MainActivity
 import com.gkreduction.interview.utils.lazyThreadSafetyNone
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_answer.view.*
 import javax.inject.Inject
 
 /**
@@ -43,7 +42,6 @@ class CategoryFragment : DaggerFragment() {
         binder = DataBindingUtil.inflate(inflater, R.layout.fragment_category, container, false)
         binder.viewModel = viewModel
         binder.fragment = this
-        viewModel!!.readFile()
         return binder.root
     }
 
@@ -51,6 +49,12 @@ class CategoryFragment : DaggerFragment() {
         super.onStart()
         initCat()
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel!!.readFile()
+    }
+
 
     private fun initCat() {
         activity?.let {

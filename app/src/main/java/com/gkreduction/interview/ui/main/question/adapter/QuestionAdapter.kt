@@ -34,7 +34,8 @@ class QuestionAdapter(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.textData.text = items[position].question
+        val text = "$position. ${items[position].question}"
+        holder.itemView.textData.text = text
         holder.binding.executePendingBindings()
 
     }

@@ -9,10 +9,13 @@ import com.gkreduction.interview.utils.BaseAndroidViewModel
 class AnswerViewModel(context: Context) :
     BaseAndroidViewModel(context.applicationContext as Application) {
     var answer = ObservableField<String>()
+    var question = ObservableField<String>()
     fun getAnswer(id: Int, list: List<DataInfo>) {
         for (data in list) {
-            if (data.id == id)
+            if (data.id == id) {
                 answer.set(data.answer)
+                question.set(data.question)
+            }
         }
 
     }

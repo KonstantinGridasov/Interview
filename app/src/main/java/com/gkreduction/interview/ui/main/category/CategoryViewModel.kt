@@ -26,7 +26,6 @@ class CategoryViewModel(context: Context) :
         val result = ArrayList<Category>()
         for (cat in set) {
             val category = Category(getPriority(cat), cat)
-            Log.e("readFile: ", getPriority(cat).toString())
             result.add(category)
         }
         result.sortBy { it.id }

@@ -1,6 +1,7 @@
 package com.gkreduction.interview.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Window.FEATURE_NO_TITLE
 import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
@@ -44,6 +45,5 @@ class MainActivity : DaggerAppCompatActivity() {
 
         navController = this.findNavController(R.id.nav_host_fragment)
     }
-
 
 }
