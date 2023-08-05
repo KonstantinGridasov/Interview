@@ -1,5 +1,6 @@
 package com.gkreduction.interview.ui.splash
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gkreduction.interview.R
 import com.gkreduction.interview.ui.main.MainActivity
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun timer() {
-        val timer = object : CountDownTimer(2000, 1000) {
+        val timer = object : CountDownTimer(1000, 500) {
             override fun onFinish() {
                 navigationToMain()
             }
@@ -33,6 +35,7 @@ class SplashActivity : AppCompatActivity() {
     fun navigationToMain() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
 
     }
 }

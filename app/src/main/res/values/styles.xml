@@ -1,11 +1,22 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/colorForegroundDay</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:navigationBarColor">@color/colorForegroundDay</item>
+
+        <item name="colorPrimary">@color/colorForegroundDay</item>
+        <item name="colorOnPrimary">@color/colorTextActiveDay</item>
+        <item name="colorSecondary">@color/colorBackgroundDay</item>
+        <item name="colorOnSecondary">@color/colorTextNotActiveDay</item>
     </style>
+
+    <style name="StyleToolBarText">
+        <item name="fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textSize">@dimen/_12gkdp</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
 
 </resources>

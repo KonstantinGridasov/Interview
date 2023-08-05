@@ -3,35 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/category">
+    app:startDestination="@id/categoryFragment">
 
     <fragment
-        android:id="@+id/category"
-        android:name="com.gkreduction.interview.ui.main.category.CategoryFragment"
-        android:label="@string/category_fragment"
+        android:id="@+id/categoryFragment"
+        android:name="com.gkreduction.interview.ui.main.fragmnet.category.CategoryFragment"
         tools:layout="@layout/fragment_category">
         <action
             android:id="@+id/action_category_to_question3"
-            app:destination="@id/question" />
+            app:destination="@id/questionFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/question"
-        android:name="com.gkreduction.interview.ui.main.question.QuestionFragment"
-        android:label="@string/question_fragment">
+        android:id="@+id/questionFragment"
+        android:name="com.gkreduction.interview.ui.main.fragmnet.question.QuestionFragment">
 
         <action
             android:id="@+id/action_question_to_answer"
-            app:destination="@id/answer" />
+            app:destination="@id/answerFragment" />
         <argument
             android:name="cat"
             app:argType="string" />
     </fragment>
 
     <fragment
-        android:id="@+id/answer"
-        android:name="com.gkreduction.interview.ui.main.answer.AnswerFragment"
-        android:label="@string/answer_fragment"
+        android:id="@+id/answerFragment"
+        android:name="com.gkreduction.interview.ui.main.fragmnet.answer.AnswerFragment"
         tools:layout="@layout/fragment_answer">
         <argument
             android:name="id"

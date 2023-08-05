@@ -7,24 +7,25 @@
 
         <variable
             name="viewModel"
-            type="com.gkreduction.interview.ui.main.category.CategoryViewModel" />
+            type="com.gkreduction.interview.ui.main.fragmnet.category.CategoryViewModel" />
 
         <variable
-            name="fragment"
-            type="com.gkreduction.interview.ui.main.category.CategoryFragment" />
+            name="listener"
+            type="com.gkreduction.interview.ui.main.fragmnet.category.adapter.AdapterCategory.ListenerList" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.question.CategoryFragment">
+        android:background="@color/colorBackgroundDay">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:itemsCategory="@{viewModel.categories}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:listenerCategory="@{(cat) -> fragment.navigateToQuestion(cat)}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:listenerCategory="@{listener}"
+            app:spanCount="2"
             tools:listitem="@layout/item_category" />
 
 

@@ -2,63 +2,72 @@ package com.gkreduction.interview.utils
 
 import android.content.Context
 import android.content.res.AssetManager
+import android.util.JsonReader
 import com.gkreduction.interview.entity.Category
 import com.gkreduction.interview.entity.DataInfo
 import java.io.BufferedReader
+import java.io.FileReader
 import java.io.IOException
 import java.io.InputStreamReader
 
 
 @Throws(IOException::class)
-fun readerScv(context: Context): ArrayList<DataInfo> {
+fun readerJson(context: Context): ArrayList<DataInfo> {
     val assetManager: AssetManager = context.resources.assets
-    val result = ArrayList<DataInfo>()
-    val reader = BufferedReader(InputStreamReader(assetManager.open("interview.csv")))
-    reader.use {
-        val list = reader.readLines()
-        for (i in 1 until list.size) {
-            var line = list[i]
-            val dataInfo = DataInfo()
-            var k = 0
-            while (line.contains(";")) {
-                when (k) {
-                    0 -> dataInfo.category = line.substringBefore(";")
-                    1 -> dataInfo.question = line.substringBefore(";")
-                    2 -> dataInfo.answer = line.substringBefore(";")
-                }
-                line = line.substringAfter(";")
-                k++
-            }
-            dataInfo.id = i
-            dataInfo.prioretyCategory = getPriority(dataInfo.category)
-            result.add(dataInfo)
-        }
+
+    var lists = ArrayList<DataInfo>()
+    val reader = JsonReader(InputStreamReader(assetManager.open("interview.json")))
+    try {
+        lists = readerBaseEntity(reader)
+
+    } catch (ex: IOException) {
+        ex.printStackTrace()
+    } finally {
+        reader.close()
     }
-    return result
+    return lists
 }
 
+@Throws(IOException::class)
+private fun readerBaseEntity(reader: JsonReader): ArrayList<DataInfo> {
+    val baseEntity = ArrayList<DataInfo>()
+    reader.beginArray()
+    var k = 0
+    while (reader.hasNext()) {
+        val item = readerLetsPlay(reader)
+        item.id = k
+        item.prioretyCategory = getPriority(item.category)
+        baseEntity.add(item)
+        k++
+    }
+    reader.endArray()
+    return baseEntity
+}
+
+private fun readerLetsPlay(reader: JsonReader): DataInfo {
+    val item = DataInfo()
+    reader.beginObject()
+    while (reader.hasNext())
+        when (reader.nextName()) {
+            "category" -> item.category = reader.nextString()
+            "question" -> item.question = reader.nextString()
+            "answer" -> item.answer = reader.nextString()
+            else -> reader.skipValue()
+        }
+    reader.endObject()
+    return item
+}
 
 fun getPriority(cat: String): Int {
     return when (cat) {
-        "ООП" -> return 1
-        "Java core." -> return 2
-        "Collections" -> return 3
-        "Java 8." -> return 4
-        "Потоки ввода/вывода в java." -> return 5
-        "Multithreading." -> return 6
-        "Сериализация." -> return 7
-        "Design patterns." -> return 8
-        "Kotlin" -> return 9
-        "Базы данных." -> return 10
-        "JDBC." -> return 11
-        "SQL." -> return 12
-        "MongoDB" -> return 13
-        "Тестирование. JUNIT." -> return 14
-        "Log4j." -> return 15
-        "UML." -> return 16
-        "XML." -> return 17
-        "Test." -> return 18
-        "Android" -> return 19
+        "ООП" -> 1
+        "Design patterns." -> 2
+        "Java Core." -> 3
+        "Java" -> 4
+        "Java 8" -> 5
+        "Kotlin" -> 6
+        "RxJava" -> 7
+        "Android" -> 8
         else -> 99
     }
 }

@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="red">#FFE82E2E</color>
+
+    <color name="background_camera">#B3000000</color>
+    <color name="colorTextHint">#BDBDBD</color>
+
+    <!--    Day    -->
+    <color name="colorBackgroundDay">#EBECF1</color>
+    <color name="colorForegroundDay">#FFFFFFFF</color>
+    <color name="colorActiveDay">#EBECF1</color>
+    <color name="colorNotActiveDay">#CDCDCD</color>
+
+    <color name="colorTextActiveDay">#FF000000</color>
+    <color name="colorTextNotActiveDay">#979797</color>
+
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>

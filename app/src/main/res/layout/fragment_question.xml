@@ -7,24 +7,24 @@
 
         <variable
             name="viewModel"
-            type="com.gkreduction.interview.ui.main.question.QuestionViewModel" />
+            type="com.gkreduction.interview.ui.main.fragmnet.question.QuestionViewModel" />
 
         <variable
-            name="fragment"
-            type="com.gkreduction.interview.ui.main.question.QuestionFragment" />
+            name="listener"
+            type="com.gkreduction.interview.ui.main.fragmnet.question.adapter.QuestionAdapter.ListenerList" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.question.CategoryFragment">
+        android:background="@color/colorBackgroundDay">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:itemsQuestion="@{viewModel.question}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:listenerQuestion="@{(id) -> fragment.navigateToAnswer(id)}"
+            app:listenerQuestion="@{listener}"
             tools:listitem="@layout/item_category" />
 
 
