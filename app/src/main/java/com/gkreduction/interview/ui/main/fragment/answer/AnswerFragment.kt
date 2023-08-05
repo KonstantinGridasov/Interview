@@ -1,4 +1,4 @@
-package com.gkreduction.interview.ui.main.fragmnet.answer
+package com.gkreduction.interview.ui.main.fragment.answer
 
 import com.gkreduction.interview.R
 import com.gkreduction.interview.databinding.FragmentAnswerBinding

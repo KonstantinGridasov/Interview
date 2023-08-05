@@ -5,51 +5,51 @@
 
     <data>
 
-        <import type="android.text.Html" />
-
         <variable
-            name="viewModel"
-            type="com.gkreduction.interview.ui.main.fragment.answer.AnswerViewModel" />
-
+            name="listener"
+            type="android.view.View.OnClickListener" />
     </data>
 
-    <ScrollView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackgroundDay">
+        android:layout_marginTop="@dimen/_5gkdp">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/_5gkdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_5gkdp"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textQuestion"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/text"
+                android:layout_width="@dimen/_100gkdp"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:fontFamily="@font/comfortaa_bold"
+                android:onClick="@{listener}"
                 android:padding="@dimen/_5gkdp"
-                android:text="@{viewModel.question}"
+                android:text="Theory"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11gkdp" />
+
+            <Button
+                android:id="@+id/exam"
+                android:layout_width="@dimen/_100gkdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40gkdp"
+                android:background="@color/white"
+                android:fontFamily="@font/comfortaa_bold"
+                android:onClick="@{listener}"
+                android:padding="@dimen/_5gkdp"
+                android:text="Exam"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11gkdp" />
 
 
-            <TextView
-                android:id="@+id/textAnswer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5gkdp"
-                android:background="@color/white"
-                android:fontFamily="@font/comfortaa_regular"
-                android:paddingStart="@dimen/_5gkdp"
-                android:paddingEnd="@dimen/_5gkdp"
-                android:text="@{viewModel.answer}"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10gkdp"
-                android:layout_marginBottom="@dimen/_5gkdp"/>
-
         </LinearLayout>
-    </ScrollView>
+    </RelativeLayout>
 </layout>

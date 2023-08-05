@@ -1,11 +1,11 @@
-package com.gkreduction.interview.ui.main.fragmnet.category
+package com.gkreduction.interview.ui.main.fragment.category
 
 import androidx.navigation.findNavController
 import com.gkreduction.interview.R
 import com.gkreduction.interview.databinding.FragmentCategoryBinding
 import com.gkreduction.interview.ui.base.BaseFragment
 import com.gkreduction.interview.ui.main.MainActivity
-import com.gkreduction.interview.ui.main.fragmnet.category.adapter.AdapterCategory
+import com.gkreduction.interview.ui.main.fragment.category.adapter.AdapterCategory
 
 class CategoryFragment :
     BaseFragment<CategoryViewModel>(

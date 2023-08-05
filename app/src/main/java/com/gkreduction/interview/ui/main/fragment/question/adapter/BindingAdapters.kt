@@ -1,8 +1,7 @@
-package com.gkreduction.interview.ui.main.fragmnet.question.adapter
+package com.gkreduction.interview.ui.main.fragment.question.adapter
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.gkreduction.interview.entity.DataInfo
 import com.gkreduction.interview.entity.Question
 
 object BindingAdapters {

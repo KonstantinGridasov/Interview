@@ -1,8 +1,7 @@
-package com.gkreduction.interview.ui.main.fragmnet.category
+package com.gkreduction.interview.ui.main.fragment.category
 
 import android.app.Application
 import android.content.Context
-import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
 import com.gkreduction.interview.entity.Category
 import com.gkreduction.interview.entity.DataInfo

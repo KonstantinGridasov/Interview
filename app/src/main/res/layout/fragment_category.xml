@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.gkreduction.interview.ui.main.fragmnet.category.CategoryViewModel" />
+            type="com.gkreduction.interview.ui.main.fragment.category.CategoryViewModel" />
 
         <variable
             name="listener"
-            type="com.gkreduction.interview.ui.main.fragmnet.category.adapter.AdapterCategory.ListenerList" />
+            type="com.gkreduction.interview.ui.main.fragment.category.adapter.AdapterCategory.ListenerList" />
     </data>
 
     <LinearLayout

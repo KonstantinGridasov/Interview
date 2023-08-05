@@ -1,11 +1,11 @@
-package com.gkreduction.interview.ui.main.fragmnet.question
+package com.gkreduction.interview.ui.main.fragment.question
 
 import androidx.navigation.findNavController
 import com.gkreduction.interview.R
 import com.gkreduction.interview.databinding.FragmentQuestionBinding
 import com.gkreduction.interview.ui.base.BaseFragment
 import com.gkreduction.interview.ui.main.MainActivity
-import com.gkreduction.interview.ui.main.fragmnet.question.adapter.QuestionAdapter
+import com.gkreduction.interview.ui.main.fragment.question.adapter.QuestionAdapter
 
 class QuestionFragment : BaseFragment<QuestionViewModel>(
     R.layout.fragment_question,

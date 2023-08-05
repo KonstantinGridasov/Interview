@@ -1,6 +1,5 @@
-package com.gkreduction.interview.ui.main.fragmnet.category.adapter
+package com.gkreduction.interview.ui.main.fragment.category.adapter
 
-import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gkreduction.interview.entity.Category

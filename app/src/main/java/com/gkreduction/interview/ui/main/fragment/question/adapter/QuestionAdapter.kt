@@ -1,4 +1,4 @@
-package com.gkreduction.interview.ui.main.fragmnet.question.adapter
+package com.gkreduction.interview.ui.main.fragment.question.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

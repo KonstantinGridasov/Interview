@@ -1,4 +1,4 @@
-package com.gkreduction.interview.ui.main.fragmnet.answer
+package com.gkreduction.interview.ui.main.fragment.answer
 
 import android.app.Application
 import android.content.Context
