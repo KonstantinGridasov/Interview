@@ -21,6 +21,7 @@ class QuestionFragment : BaseFragment<QuestionViewModel>(
         val args = QuestionFragmentArgs.fromBundle(requireArguments())
         if (args.cat.isNotEmpty())
             initQuestion(args.cat)
+        initializeAdaptersRecycler()
     }
 
     private fun initQuestion(cat: String) {
@@ -35,7 +36,13 @@ class QuestionFragment : BaseFragment<QuestionViewModel>(
     }
 
 
-    override fun onItemClick(id: Int) {
+    private fun initializeAdaptersRecycler() {
+        val position = viewModel?.position ?: 0
+        (binding as FragmentQuestionBinding).rvQuestion.scrollToPosition(position)
+    }
+
+    override fun onItemClick(id: Int, adapterPosition: Int) {
+        viewModel?.position = adapterPosition
         view?.findNavController()?.navigate(QuestionFragmentDirections.actionQuestionToAnswer(id))
     }
 }

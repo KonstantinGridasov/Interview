@@ -10,6 +10,7 @@ import com.gkreduction.interview.utils.BaseAndroidViewModel
 class QuestionViewModel(context: Context) :
     BaseAndroidViewModel(context.applicationContext as Application) {
     var question = ObservableArrayList<Question>()
+    var position: Int = 0
 
     fun initQuestion(cat: String, list: List<DataInfo>) {
         list.sortedBy { it.id }

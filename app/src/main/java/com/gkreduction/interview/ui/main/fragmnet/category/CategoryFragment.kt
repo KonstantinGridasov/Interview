@@ -28,8 +28,9 @@ class CategoryFragment :
             if (it is MainActivity)
                 it.setToolbarName(it.resources.getString(R.string.category))
         }
-
     }
+
+
 
     override fun onCategoryClick(type: String) {
         view?.findNavController()

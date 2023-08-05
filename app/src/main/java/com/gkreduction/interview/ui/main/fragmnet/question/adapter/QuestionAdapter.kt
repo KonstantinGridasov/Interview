@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gkreduction.interview.R
-import com.gkreduction.interview.databinding.ItemCategoryBinding
 import com.gkreduction.interview.databinding.ItemQuestionBinding
 import com.gkreduction.interview.entity.Question
 
@@ -14,13 +13,18 @@ class QuestionAdapter(
     private val listener: ListenerList?
 ) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
     interface ListenerList {
-        fun onItemClick(id: Int)
+        fun onItemClick(id: Int, adapterPosition: Int)
     }
 
     inner class ViewHolder(val binding: ItemQuestionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            itemView.setOnClickListener { listener!!.onItemClick(items[adapterPosition].id) }
+            itemView.setOnClickListener {
+                listener!!.onItemClick(
+                    items[adapterPosition].id,
+                    adapterPosition
+                )
+            }
         }
     }
 
