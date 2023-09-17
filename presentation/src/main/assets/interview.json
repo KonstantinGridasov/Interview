@@ -1,0 +1,17 @@
+[
+  {
+    "category": "Test",
+    "question": "Test 1",
+    "answer": "<font color = '#ff00ff' > Каждый элемент </font>  private — ограничивает видимость данных и методов пределами одного класса."
+  },
+  {
+    "category": "Test",
+    "question": "Test 2",
+    "answer": "<br>protected — <br>Поля и методы, <br>обозначенные модификатором доступа protected,  "
+  },
+  {
+    "category": "Test",
+    "question": "Test 3",
+    "answer": "<font  color = '#F1720E' >Coroutines</font> — это экземпляр приостанавливаемого вычисления Концептуально он похож на поток в том смысле, что для запуска требуется блок кода, который работает одновременно с остальным кодом. Однако сопрограмма не привязана к какому-либо конкретному потоку. Он может приостановить свое выполнение в одном потоке и возобновить его в другом.  <div>&ensp;<font color = '#F1720E'>fun</font> main() { <br> &emsp;&ensp; <font color = '#F1720E'> launch </font> { <br>  &ensp;&emsp;&emsp;<font color = '#F1720E'> delay</font>(1000L) <br> &ensp;&emsp; &emsp;println(\"Hellow\") <br> &ensp;&emsp; }<br>  &ensp;&emsp;println(\"World\")<br> &ensp; }</div> <font color = '#F1720E' >launch </font> — это построитель сопрограмм . Он запускает новую сопрограмму одновременно с остальным кодом, который продолжает работать независимо. той разницы runBlocking является обычной функцией, а coroutineScope — функцией приостановки."
+  }
+]
