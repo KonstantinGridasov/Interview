@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.gkreduction.data.repository.NetworkRepositoryImpl
+import com.gkreduction.data.repository.db.DbRepositoryImpl
+import com.gkreduction.data.repository.network.NetworkRepositoryImpl
 import com.gkreduction.domain.usecase.GetRoadmapsUseCase
+import com.gkreduction.domain.usecase.UpdateQaUseCase
 import com.gkreduction.interview.di.scope.MainScope
 import com.gkreduction.interview.ui.main.MainViewModel
 import com.gkreduction.interview.ui.main.fragment.answer.AnswerFragment
@@ -44,16 +46,18 @@ abstract class MainModule {
     companion object {
         @Provides
         @MainScope
-        fun providesGetRoadmapsUseCase(
-            service: NetworkRepositoryImpl,
-        ) =
-            GetRoadmapsUseCase(service)
+        fun providesGetRoadmapsUseCase(service: NetworkRepositoryImpl) = GetRoadmapsUseCase(service)
+
+        @Provides
+        @MainScope
+        fun providesUpdateQaUseCase(service: DbRepositoryImpl) = UpdateQaUseCase(service)
 
 
         @Provides
         fun provideViewModelFactory(
             app: Application,
-            getRoadmapsUseCase: GetRoadmapsUseCase
+            getRoadmapsUseCase: GetRoadmapsUseCase,
+            updateQaUseCase: UpdateQaUseCase
         ): ViewModelProvider.Factory {
             return object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
@@ -69,7 +73,7 @@ abstract class MainModule {
                         modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                             HomeViewModel(
                                 app,
-                                getRoadmapsUseCase
+                                getRoadmapsUseCase,updateQaUseCase
                             ) as T
 
                         modelClass.isAssignableFrom(MainViewModel::class.java) ->

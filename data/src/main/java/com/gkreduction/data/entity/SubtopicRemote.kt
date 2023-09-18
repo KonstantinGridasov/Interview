@@ -7,4 +7,4 @@ import kotlinx.serialization.Serializable
 class SubtopicRemote(
     @SerialName("id") val id: Int?,
     @SerialName("name") val name: String?,
-)
+) : BaseRemote

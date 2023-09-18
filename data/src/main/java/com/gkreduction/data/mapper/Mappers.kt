@@ -1,71 +1,42 @@
 package com.gkreduction.data.mapper
 
-import android.util.Log
-import com.gkreduction.data.entity.RoadmapRemote
-import com.gkreduction.data.entity.SectionRemote
-import com.gkreduction.data.entity.SubtopicRemote
-import com.gkreduction.data.entity.TopicRemote
-import com.gkreduction.domain.entity.Roadmap
-import com.gkreduction.domain.entity.Section
-import com.gkreduction.domain.entity.Subtopic
-import com.gkreduction.domain.entity.Topic
+import com.gkreduction.data.entity.*
+import com.gkreduction.domain.entity.*
 
-fun mapListRoadmap(list: List<RoadmapRemote>): List<Roadmap> {
-    val result = ArrayList<Roadmap>()
-    list.forEach {
-        result.add(it.toCoreModel())
+fun mapperRemoteListToModelList(items: List<BaseRemote>?): List<BaseElement> {
+    val result = ArrayList<BaseElement>()
+    items?.forEach {
+        when (it) {
+            is RoadmapRemote -> result.add(transformRoadmapRemote(it))
+            is SectionRemote -> result.add(transformSectionRemote(it))
+            is TopicRemote -> result.add(transformTopicRemote(it))
+            is SubtopicRemote -> result.add(transformSubtopicRemote(it))
+        }
     }
     return result
 }
 
-fun RoadmapRemote.toCoreModel(): Roadmap = Roadmap(
-    id = this.id ?: 1,
-    name = this.name ?: "",
-    section = mapListSection(this.sections)
+
+fun transformRoadmapRemote(item: RoadmapRemote) = Roadmap(
+    id = item.id ?: 1,
+    name = item.name ?: "",
+    section = mapperRemoteListToModelList(item.sections)
 )
 
-fun mapListSection(sections: List<SectionRemote>?): List<Section> {
-    val result = ArrayList<Section>()
-    Log.d("MAPPERS ", "sections is null = " + sections?.size)
-    Log.d("MAPPERS ", "size = " + sections?.size)
-    sections?.forEach {
-        result.add(it.toCoreModel())
-    }
-    return result
-
-}
-
-fun SectionRemote.toCoreModel(): Section = Section(
-    id = this.id ?: 1,
-    name = this.name ?: "",
-    position = this.position ?: 0,
-    topics = mapListTopic(this.topics)
+fun transformSectionRemote(item: SectionRemote) = Section(
+    id = item.id ?: 1,
+    name = item.name ?: "",
+    position = item.position ?: 0,
+    topics = mapperRemoteListToModelList(item.topics)
 )
 
-fun mapListTopic(sections: List<TopicRemote>?): List<Topic> {
-    val result = ArrayList<Topic>()
-    sections?.forEach {
-        result.add(it.toCoreModel())
-    }
-    return result
-}
-
-fun TopicRemote.toCoreModel(): Topic = Topic(
-    id = this.id ?: 1,
-    name = this.name ?: "",
-    subtopics = mapListSubTopic(this.subtopics)
+fun transformTopicRemote(item: TopicRemote) = Topic(
+    id = item.id ?: 1,
+    name = item.name ?: "",
+    subtopics = mapperRemoteListToModelList(item.subtopics)
 )
 
-fun mapListSubTopic(sections: List<SubtopicRemote>?): List<Subtopic> {
-    val result = ArrayList<Subtopic>()
-    sections?.forEach {
-        result.add(it.toCoreModel())
-    }
-    return result
-}
-
-fun SubtopicRemote.toCoreModel(): Subtopic = Subtopic(
-    id = this.id ?: 1,
-    name = this.name ?: "",
+fun transformSubtopicRemote(item: SubtopicRemote) = Subtopic(
+    id = item.id ?: 1,
+    name = item.name ?: ""
 )
-

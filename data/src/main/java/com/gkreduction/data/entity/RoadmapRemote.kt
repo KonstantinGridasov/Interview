@@ -8,5 +8,4 @@ class RoadmapRemote(
     @SerialName("id") val id: Int?,
     @SerialName("name") val name: String?,
     @SerialName("sections") val sections: List<SectionRemote>?,
-
-    )
+) : BaseRemote

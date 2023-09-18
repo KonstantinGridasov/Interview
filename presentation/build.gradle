@@ -40,7 +40,8 @@ dependencies {
     var gson_version = '2.9.1'
     var retrofitVersion = '2.9.0'
     var okHttpVersion = '4.11.0'
-    
+    var room_version = '2.5.0'
+
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
     implementation "com.google.code.gson:gson:$gson_version"
@@ -54,6 +55,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
 
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
 
 //    testImplementation 'junit:junit:4.+'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.1'

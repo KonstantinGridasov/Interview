@@ -4,6 +4,7 @@ import android.app.Application
 import com.gkreduction.interview.Interview
 import com.gkreduction.interview.di.module.ActivityModule
 import com.gkreduction.interview.di.module.AppModule
+import com.gkreduction.interview.di.module.DbModule
 import com.gkreduction.interview.di.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
@@ -17,6 +18,7 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         ActivityModule::class,
         NetworkModule::class,
+        DbModule::class,
         AppModule::class]
 )
 interface AppComponent : AndroidInjector<Interview> {

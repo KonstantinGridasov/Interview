@@ -1,8 +1,8 @@
 package com.gkreduction.interview.di.module
 
-import com.gkreduction.data.repository.NetworkApi
-import com.gkreduction.data.repository.NetworkRepositoryImpl
-import com.gkreduction.data.repository.datasource.NetworkDataStore
+import com.gkreduction.data.repository.network.NetworkApi
+import com.gkreduction.data.repository.network.NetworkRepositoryImpl
+import com.gkreduction.data.repository.network.datasource.NetworkDataStore
 import com.gkreduction.domain.repository.NetworkRepository
 import com.gkreduction.interview.BuildConfig
 import com.google.gson.FieldNamingPolicy

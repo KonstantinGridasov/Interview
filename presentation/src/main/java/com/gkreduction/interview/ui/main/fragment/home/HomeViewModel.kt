@@ -6,10 +6,15 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.gkreduction.domain.entity.Roadmap
 import com.gkreduction.domain.usecase.GetRoadmapsUseCase
+import com.gkreduction.domain.usecase.UpdateQaUseCase
 import com.gkreduction.interview.utils.BaseAndroidViewModel
 import kotlinx.coroutines.launch
 
-class HomeViewModel(context: Context, var getRoadmapsUseCase: GetRoadmapsUseCase) :
+class HomeViewModel(
+    context: Context,
+    var getRoadmapsUseCase: GetRoadmapsUseCase,
+    var updateQaUseCase: UpdateQaUseCase
+) :
     BaseAndroidViewModel(context.applicationContext as Application) {
 
     fun fetchRoadmaps() {
@@ -25,6 +30,16 @@ class HomeViewModel(context: Context, var getRoadmapsUseCase: GetRoadmapsUseCase
                         }
 
                     }
+                }
+        }
+    }
+
+    fun fetchQA() {
+        viewModelScope.launch {
+            updateQaUseCase.execute()
+                .let {
+                    Log.d("fetchQA", " name= $it")
+
                 }
         }
     }

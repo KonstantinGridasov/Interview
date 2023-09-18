@@ -8,4 +8,4 @@ class TopicRemote(
     @SerialName("id") val id: Int?,
     @SerialName("name") val name: String?,
     @SerialName("subtopics") val subtopics: List<SubtopicRemote>?,
-)
+):BaseRemote

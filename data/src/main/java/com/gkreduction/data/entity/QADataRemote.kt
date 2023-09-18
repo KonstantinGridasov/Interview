@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class QARoadmapRemote(
-    @SerialName("id") val id: Int?,
-    @SerialName("name") val name: String?,
+class QADataRemote(
+    @SerialName("id") var id: Int,
+    @SerialName("name") var name: String,
 )

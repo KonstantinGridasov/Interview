@@ -25,7 +25,7 @@ class HomeFragment :
     override fun onClick(p0: View?) {
         when (p0) {
             (binding as FragmentHomeBinding).exam -> viewModel?.fetchRoadmaps()
-//            (binding as FragmentHomeBinding).text -> navigateToCategory()
+            (binding as FragmentHomeBinding).text -> viewModel?.fetchQA()
         }
     }
 

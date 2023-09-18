@@ -4,6 +4,6 @@ class Section(
     override var id: Int,
     override var name: String,
     var position: Int,
-    var topics: List<Topic>
+    var topics: List<BaseElement>
 ) :
     BaseElement(id, name)
