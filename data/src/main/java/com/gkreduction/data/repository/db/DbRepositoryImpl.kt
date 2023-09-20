@@ -12,8 +12,14 @@ class DbRepositoryImpl(
 ) : DbRepository {
 
 
-    override suspend fun updateDb(): Boolean {
+    override suspend fun updateQuestion(): Boolean {
         qaDao.insert(network.getQa())
         return true
+    }
+
+    override suspend fun updateDb(): Boolean {
+        roadmapDao.insert(network.getNetworkRoadmaps())
+        return true
+
     }
 }

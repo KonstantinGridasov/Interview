@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class RoadmapRemote(
-    @SerialName("id") val id: Int?,
+    @SerialName("id") val id: Long?,
     @SerialName("name") val name: String?,
-    @SerialName("sections") val sections: List<SectionRemote>?,
+    @SerialName("sections") val sections: List<SectionRemote>,
 ) : BaseRemote

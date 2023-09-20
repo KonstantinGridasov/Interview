@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class SectionRemote(
-    @SerialName("id") val id: Int?,
+    @SerialName("id") val id: Long?,
     @SerialName("name") val name: String?,
     @SerialName("position") val position: Int?,
-    @SerialName("topics") val topics: List<TopicRemote>?,
+    @SerialName("topics") val topics: List<TopicRemote>,
 ):BaseRemote

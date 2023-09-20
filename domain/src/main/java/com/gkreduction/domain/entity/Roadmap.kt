@@ -1,4 +1,4 @@
 package com.gkreduction.domain.entity
 
-class Roadmap(override var id: Int, override var name: String, var section: List<BaseElement>) :
+class Roadmap(override var id: Long, override var name: String, var section: List<BaseElement>) :
     BaseElement(id, name)

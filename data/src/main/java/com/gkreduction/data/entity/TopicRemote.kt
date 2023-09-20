@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class TopicRemote(
-    @SerialName("id") val id: Int?,
+    @SerialName("id") val id: Long?,
     @SerialName("name") val name: String?,
-    @SerialName("subtopics") val subtopics: List<SubtopicRemote>?,
+    @SerialName("subtopics") val subtopics: List<SubtopicRemote>,
 ):BaseRemote

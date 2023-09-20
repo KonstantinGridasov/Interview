@@ -4,15 +4,14 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.gkreduction.domain.entity.Roadmap
-import com.gkreduction.domain.usecase.GetRoadmapsUseCase
 import com.gkreduction.domain.usecase.UpdateQaUseCase
+import com.gkreduction.domain.usecase.UpdateRoadmapsUseCase
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     context: Context,
-    var getRoadmapsUseCase: GetRoadmapsUseCase,
+    var getRoadmapsUseCase: UpdateRoadmapsUseCase,
     var updateQaUseCase: UpdateQaUseCase
 ) :
     BaseAndroidViewModel(context.applicationContext as Application) {
@@ -21,15 +20,7 @@ class HomeViewModel(
         viewModelScope.launch {
             getRoadmapsUseCase.execute()
                 .let {
-                    when (it[0]) {
-                        is Roadmap -> {
-                            val roadmap = it[0] as Roadmap
-                            println(roadmap)
-                            Log.d("fetchRoadmaps", " name= " + roadmap.name)
-                            Log.d("fetchRoadmaps", " size= " + roadmap.section.size)
-                        }
-
-                    }
+                    Log.d("fetchQA", " name= $it")
                 }
         }
     }

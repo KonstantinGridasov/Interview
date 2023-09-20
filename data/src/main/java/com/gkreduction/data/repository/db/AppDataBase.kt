@@ -7,10 +7,7 @@ import androidx.room.RoomDatabase
 import com.gkreduction.data.repository.db.dao.QuestionAnswerDao
 import com.gkreduction.data.repository.db.dao.RoadmapDao
 import com.gkreduction.data.repository.db.entity.question.*
-import com.gkreduction.data.repository.db.entity.roadmap.RoadmapDb
-import com.gkreduction.data.repository.db.entity.roadmap.SectionDb
-import com.gkreduction.data.repository.db.entity.roadmap.SubTopicDb
-import com.gkreduction.data.repository.db.entity.roadmap.TopicDb
+import com.gkreduction.data.repository.db.entity.roadmap.*
 
 @Database(
     entities = [
