@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,45 +10,83 @@
     </data>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_5gkdp">
+        android:background="@drawable/background"
+        android:orientation="vertical">
+
+        <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+            android:id="@+id/sub_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_marginStart="@dimen/_5gkdp"
+            android:layout_marginTop="@dimen/_15gkdp"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            android:onClick="@{listener}"
+            app:icon_sub_item="@drawable/ic_update"
+            app:text_sub_item="@string/update_info" />
+
+
+        <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+            android:id="@+id/sub_item_question"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_marginStart="@dimen/_5gkdp"
+            android:layout_marginTop="@dimen/_15gkdp"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            android:onClick="@{listener}"
+            app:icon_sub_item="@drawable/ic_update"
+            app:text_sub_item="@string/update_question" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_5gkdp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginStart="@dimen/_5gkdp"
+            android:layout_marginTop="@dimen/_30gkdp"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            android:background="@drawable/background_rounded_roadmaps"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_15gkdp">
 
-            <Button
-                android:id="@+id/text"
-                android:layout_width="@dimen/_100gkdp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:fontFamily="@font/comfortaa_bold"
-                android:onClick="@{listener}"
-                android:padding="@dimen/_5gkdp"
-                android:text="Theory"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11gkdp" />
+                android:layout_marginStart="@dimen/_5gkdp"
+                android:layout_marginTop="@dimen/_5gkdp"
+                android:gravity="start"
+                android:text="Android Dev"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15gkdp" />
 
-            <Button
-                android:id="@+id/exam"
-                android:layout_width="@dimen/_100gkdp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40gkdp"
-                android:background="@color/white"
-                android:fontFamily="@font/comfortaa_bold"
-                android:onClick="@{listener}"
-                android:padding="@dimen/_5gkdp"
-                android:text="Exam"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11gkdp" />
+            <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25gkdp"
+                android:layout_marginStart="@dimen/_15gkdp"
+                android:layout_marginTop="@dimen/_10gkdp"
+                android:layout_marginEnd="@dimen/_10gkdp"
+                app:icon_sub_item="@drawable/ic_roadmap"
+                app:text_sub_item="@string/roadmap" />
+
+            <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25gkdp"
+                android:layout_marginStart="@dimen/_15gkdp"
+                android:layout_marginTop="@dimen/_10gkdp"
+                android:layout_marginEnd="@dimen/_10gkdp"
+                app:icon_sub_item="@drawable/ic_theory"
+                app:text_sub_item="@string/theory" />
+
+            <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25gkdp"
+                android:layout_marginStart="@dimen/_15gkdp"
+                android:layout_marginTop="@dimen/_10gkdp"
+                android:layout_marginEnd="@dimen/_10gkdp"
+                app:icon_sub_item="@drawable/ic_question"
+                app:text_sub_item="@string/question" />
 
 
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

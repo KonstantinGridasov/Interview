@@ -9,7 +9,8 @@
 
         <variable
             name="viewModel"
-            type="com.gkreduction.interview.ui.main.fragment.answer.AnswerViewModel" />
+
+            type="com.gkreduction.roadmap.ui.main.fragment.answer.AnswerViewModel" />
 
     </data>
 

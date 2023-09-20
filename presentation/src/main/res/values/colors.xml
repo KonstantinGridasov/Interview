@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="color_splash_start">#024561</color>
+    <color name="color_foreground">#02161E</color>
+    <color name="color_second_background">#446379</color>
+
+    <color name="color_sub_item">#F1720E</color>
+    <color name="color_name_section">#EEAC47</color>
+
+    <color name="color_white">#FFFFFF</color>
+
+
 
     <color name="red">#FFE82E2E</color>
 

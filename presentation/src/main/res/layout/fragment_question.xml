@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.gkreduction.interview.ui.main.fragment.question.QuestionViewModel" />
+            type="com.gkreduction.roadmap.ui.main.fragment.question.QuestionViewModel" />
 
         <variable
             name="listener"
-            type="com.gkreduction.interview.ui.main.fragment.question.adapter.QuestionAdapter.ListenerList" />
+            type="com.gkreduction.roadmap.ui.main.fragment.question.adapter.QuestionAdapter.ListenerList" />
     </data>
 
     <LinearLayout

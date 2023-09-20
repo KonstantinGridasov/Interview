@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.gkreduction.interview.ui.main.fragment.exam.ExamViewModel" />
+            type="com.gkreduction.roadmap.ui.main.fragment.exam.ExamViewModel" />
 
     </data>
 

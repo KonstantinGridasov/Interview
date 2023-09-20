@@ -4,6 +4,8 @@
     <bytecodeTargetLevel target="1.8">
       <module name="interview.data" target="11" />
       <module name="interview.presentation" target="11" />
+      <module name="roadmap.data" target="11" />
+      <module name="roadmap.presentation" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

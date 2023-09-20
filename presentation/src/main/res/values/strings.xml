@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">Interview</string>
+    <string name="app_name">Roadmaps</string>
     <string name="category">Категория</string>
+    <string name="update_info">Обновление информации</string>
+    <string name="update_question">Обновление вопросов</string>
+    <string name="roadmap">Roadmap</string>
+    <string name="theory">Теория</string>
+    <string name="question">Вопросы</string>
     <!--    <string name="action_settings">Settings</string>-->
     <!--    <string name="category_fragment">Category Fragment</string>-->
     <!--    <string name="question_fragment">Question Fragment</string>-->
