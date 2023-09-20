@@ -34,18 +34,38 @@ data class QADataSubtopicDb(
     @ColumnInfo val name: String,
 )
 
-@Entity(tableName = "qa_with_data_db", primaryKeys = ["qaId", "dataId"])
-data class QAWithDataCrossRef(
+@Entity(tableName = "cross_ref_qa_roadmap", primaryKeys = ["qaId", "dataId"])
+data class QAWithRoadmapCrossRef(
     val qaId: Long,
     val dataId: Long,
 )
+
+@Entity(tableName = "cross_ref_qa_section", primaryKeys = ["qaId", "dataId"])
+data class QAWithSectionCrossRef(
+    val qaId: Long,
+    val dataId: Long,
+)
+
+@Entity(tableName = "cross_ref_qa_topic", primaryKeys = ["qaId", "dataId"])
+data class QAWithTopicCrossRef(
+    val qaId: Long,
+    val dataId: Long,
+)
+
+@Entity(tableName = "cross_ref_qa_subtopic", primaryKeys = ["qaId", "dataId"])
+data class QAWithSubTopicCrossRef(
+    val qaId: Long,
+    val dataId: Long,
+)
+
+
 
 data class QAWithRoadmap(
     @Embedded val qa: QuestionAnswerDb,
     @Relation(
         parentColumn = "qaId",
         entityColumn = "dataId",
-        associateBy = Junction(QAWithDataCrossRef::class)
+        associateBy = Junction(QAWithRoadmapCrossRef::class)
 
     )
     val qaRoadmaps: List<QADataRoadmapDb>
@@ -56,7 +76,7 @@ data class QAWithSection(
     @Relation(
         parentColumn = "qaId",
         entityColumn = "dataId",
-        associateBy = Junction(QAWithDataCrossRef::class)
+        associateBy = Junction(QAWithSectionCrossRef::class)
 
     )
     val qaSections: List<QADataSectionDb>
@@ -67,7 +87,7 @@ data class QAWithTopic(
     @Relation(
         parentColumn = "qaId",
         entityColumn = "dataId",
-        associateBy = Junction(QAWithDataCrossRef::class)
+        associateBy = Junction(QAWithTopicCrossRef::class)
 
     )
     val qaTopics: List<QADataTopicDb>
@@ -79,7 +99,7 @@ data class QAWithSubtopic(
     @Relation(
         parentColumn = "qaId",
         entityColumn = "dataId",
-        associateBy = Junction(QAWithDataCrossRef::class)
+        associateBy = Junction(QAWithSubTopicCrossRef::class)
 
     )
     val qaSubtopics: List<QADataSubtopicDb>

@@ -16,7 +16,9 @@ import com.gkreduction.data.repository.db.entity.roadmap.TopicDb
     entities = [
         RoadmapDb::class, SectionDb::class, TopicDb::class, SubTopicDb::class,
         QuestionAnswerDb::class, QADataRoadmapDb::class, QADataSectionDb::class,
-        QADataTopicDb::class, QADataSubtopicDb::class, QAWithDataCrossRef::class,
+        QADataTopicDb::class, QADataSubtopicDb::class,
+        QAWithRoadmapCrossRef::class, QAWithSectionCrossRef::class,
+        QAWithTopicCrossRef::class, QAWithSubTopicCrossRef::class
     ],
     version = 1
 )
