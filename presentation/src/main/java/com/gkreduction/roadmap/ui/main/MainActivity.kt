@@ -36,6 +36,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
         data = readerJson(this)
         initListener()
+
     }
 
     private fun initListener() {

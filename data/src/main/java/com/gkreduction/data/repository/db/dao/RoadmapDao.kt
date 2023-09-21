@@ -17,6 +17,11 @@ import com.gkreduction.data.repository.db.entity.roadmap.TopicDb
 @Dao
 interface RoadmapDao {
     @Transaction
+    @Query("SELECT * FROM roadmap_db ")
+    suspend fun getAllRoadmaps(): List<RoadmapDb>
+
+
+    @Transaction
     suspend fun insert(roadmapList: List<RoadmapRemote>) {
         for (roadmap in roadmapList) {
             val id = initRoadmap(roadmap)

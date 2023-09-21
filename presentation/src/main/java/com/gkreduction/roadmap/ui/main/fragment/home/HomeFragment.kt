@@ -6,20 +6,22 @@ import androidx.navigation.findNavController
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentHomeBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
-import com.gkreduction.roadmap.ui.main.MainActivity
+import com.gkreduction.roadmap.ui.main.fragment.home.adapter.RoadmapAdapter
 
 class HomeFragment :
     BaseFragment<HomeViewModel>(
         R.layout.fragment_home,
         HomeViewModel::class.java
     ), View.OnClickListener {
+
+    private var roadmapAdapter: RoadmapAdapter? = null
+
     override fun onStart() {
         super.onStart()
         (binding as FragmentHomeBinding).listener = this
-        activity?.let {
-            if (it is MainActivity)
-                it.setToolbarName(it.resources.getString(R.string.app_name))
-        }
+        initAdapters()
+        initObservers()
+        viewModel?.getRoadmapsFromDb()
     }
 
 
@@ -30,6 +32,38 @@ class HomeFragment :
         }
     }
 
+
+    private fun initAdapters() {
+        roadmapAdapter = RoadmapAdapter(
+            onRoadmapClick = { onRoadmapClick(it) },
+            onTheoryClick = { onTheoryClick(it) },
+            onQuestionClick = { onQuestionClick(it) })
+
+        (binding as FragmentHomeBinding).rvRoadmaps.adapter = roadmapAdapter
+    }
+
+
+    private fun initObservers() {
+        activity?.let {
+            viewModel?.roadmaps?.observe(it) { items ->
+                roadmapAdapter?.updateItems(items)
+            }
+        }
+
+    }
+    //region Navigate
+
+    private fun onRoadmapClick(long: Long) {
+        Log.d(" initAdapters(it)", "onRoadmapClick= $long")
+    }
+
+    private fun onQuestionClick(long: Long) {
+        Log.d("initAdapters", "onQuestionClick= $long")
+    }
+
+    private fun onTheoryClick(long: Long) {
+        Log.d("initAdapters", "onTheoryClick= $long")
+    }
 
     private fun navigateToExam() {
         view?.findNavController()
@@ -42,4 +76,5 @@ class HomeFragment :
             ?.navigate(HomeFragmentDirections.homeToCategory())
 
     }
+    //endregion
 }

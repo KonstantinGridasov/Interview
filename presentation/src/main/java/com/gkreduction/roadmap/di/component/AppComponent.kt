@@ -1,7 +1,7 @@
 package com.gkreduction.roadmap.di.component
 
 import android.app.Application
-import com.gkreduction.roadmap.Roadmap
+import com.gkreduction.roadmap.RoadmapApp
 import com.gkreduction.roadmap.di.module.ActivityModule
 import com.gkreduction.roadmap.di.module.AppModule
 import com.gkreduction.roadmap.di.module.DbModule
@@ -21,7 +21,7 @@ import javax.inject.Singleton
         DbModule::class,
         AppModule::class]
 )
-interface AppComponent : AndroidInjector<Roadmap> {
+interface AppComponent : AndroidInjector<RoadmapApp> {
     fun inject(application: Application)
 
     @Component.Builder

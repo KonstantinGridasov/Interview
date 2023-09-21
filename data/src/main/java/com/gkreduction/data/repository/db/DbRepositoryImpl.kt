@@ -1,8 +1,10 @@
 package com.gkreduction.data.repository.db
 
+import com.gkreduction.data.mapper.mapperRoadmapsDbToCore
 import com.gkreduction.data.repository.db.dao.QuestionAnswerDao
 import com.gkreduction.data.repository.db.dao.RoadmapDao
 import com.gkreduction.data.repository.network.datasource.NetworkDataStore
+import com.gkreduction.domain.entity.Roadmap
 import com.gkreduction.domain.repository.DbRepository
 
 class DbRepositoryImpl(
@@ -21,5 +23,9 @@ class DbRepositoryImpl(
         roadmapDao.insert(network.getNetworkRoadmaps())
         return true
 
+    }
+
+    override suspend fun getRoadmaps(): List<Roadmap> {
+        return mapperRoadmapsDbToCore(roadmapDao.getAllRoadmaps())
     }
 }
