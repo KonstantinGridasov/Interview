@@ -71,7 +71,7 @@ interface QuestionAnswerDao {
     suspend fun insert(qaRoadmap: QADataRoadmapDb): Long
 
     @Query("SELECT EXISTS(SELECT * FROM qa_data_roadmap_db WHERE dataId = :dataId)")
-    fun isExistsQaRoadmap(dataId: Long): Boolean
+    suspend fun isExistsQaRoadmap(dataId: Long): Boolean
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(qa: QADataRoadmapDb)
