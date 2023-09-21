@@ -20,6 +20,8 @@
         android:id="@+id/toolbar_text"
         style="@style/StyleToolBarText"
         android:layout_width="wrap_content"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10gkdp"
         android:gravity="center_vertical"

@@ -59,12 +59,11 @@ data class QAWithSubTopicCrossRef(
 )
 
 
-
 data class QAWithRoadmap(
     @Embedded val qa: QuestionAnswerDb,
     @Relation(
-        parentColumn = "qaId",
-        entityColumn = "dataId",
+        entityColumn = "qaId",
+        parentColumn = "dataId",
         associateBy = Junction(QAWithRoadmapCrossRef::class)
 
     )
@@ -82,6 +81,17 @@ data class QAWithSection(
     val qaSections: List<QADataSectionDb>
 )
 
+data class SectionWithQa(
+    @Embedded val qa: QADataSectionDb,
+    @Relation(
+        parentColumn = "dataId",
+        entityColumn = "qaId",
+        associateBy = Junction(QAWithSectionCrossRef::class)
+
+    )
+    val qaRoadmaps: List<QuestionAnswerDb>
+)
+
 data class QAWithTopic(
     @Embedded val qa: QuestionAnswerDb,
     @Relation(
@@ -91,6 +101,18 @@ data class QAWithTopic(
 
     )
     val qaTopics: List<QADataTopicDb>
+)
+
+
+data class TopicWithQa(
+    @Embedded val qa: QADataTopicDb,
+    @Relation(
+        parentColumn = "dataId",
+        entityColumn = "qaId",
+        associateBy = Junction(QAWithTopicCrossRef::class)
+
+    )
+    val qaRoadmaps: List<QuestionAnswerDb>
 )
 
 
@@ -106,6 +128,16 @@ data class QAWithSubtopic(
 )
 
 
+data class SubtopicWithQa(
+    @Embedded val qa: QADataSubtopicDb,
+    @Relation(
+        parentColumn = "dataId",
+        entityColumn = "qaId",
+        associateBy = Junction(QAWithSubTopicCrossRef::class)
+
+    )
+    val qaRoadmaps: List<QuestionAnswerDb>
+)
 
 
 

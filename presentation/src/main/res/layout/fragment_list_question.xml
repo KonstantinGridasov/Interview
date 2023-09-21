@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5gkdp"
+        android:layout_marginTop="@dimen/_5gkdp"
+        android:layout_marginEnd="@dimen/_5gkdp"
+        android:background="?colorPrimary"
+        app:cardCornerRadius="@dimen/_5gkdp">
+
+        <FrameLayout
+            android:id="@+id/root_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?colorPrimary">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_8gkdp"
+                android:layout_marginBottom="@dimen/_8gkdp"
+                android:layout_marginStart="@dimen/_10gkdp"
+                android:layout_marginEnd="@dimen/_10gkdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_list" />
+
+        </FrameLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

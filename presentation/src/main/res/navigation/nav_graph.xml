@@ -71,5 +71,25 @@
             android:name="id"
             app:argType="long" />
 
+        <action
+            android:id="@+id/roadmap_to_question_list"
+            app:destination="@id/listQuestionFragment">
+            <argument
+                android:name="item"
+                app:argType="com.gkreduction.domain.entity.BaseItem" />
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/listQuestionFragment"
+        android:name="com.gkreduction.roadmap.ui.main.fragment.list.ListQuestionFragment"
+        tools:layout="@layout/fragment_list_question">
+
+        <argument
+            android:name="item"
+            app:argType="com.gkreduction.domain.entity.BaseItem" />
+
     </fragment>
 </navigation>

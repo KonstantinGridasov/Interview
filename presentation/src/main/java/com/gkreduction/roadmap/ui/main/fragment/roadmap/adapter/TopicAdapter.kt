@@ -32,7 +32,7 @@ class TopicAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleTopic.text = getTopicText(position)
-        holder.binding.titleTopic.setOnClickListener { onTopicListener?.onTopicClick(items[position].id) }
+        holder.binding.titleTopic.setOnClickListener { onTopicListener?.onTopicClick(items[position]) }
         holder.binding.rvSubtopics.adapter =
             SubTopicAdapter(items[position].subtopics, onSubtopicListener)
     }

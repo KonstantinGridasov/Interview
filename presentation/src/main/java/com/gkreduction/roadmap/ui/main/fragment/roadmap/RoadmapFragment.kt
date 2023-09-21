@@ -1,9 +1,11 @@
 package com.gkreduction.roadmap.ui.main.fragment.roadmap
 
-import android.util.Log
+import androidx.navigation.findNavController
+import com.gkreduction.domain.entity.BaseItem
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentRoadmapBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
+import com.gkreduction.roadmap.ui.main.MainActivity
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.adapter.OnSectionListener
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.adapter.OnSubtopicListener
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.adapter.OnTopicListener
@@ -36,22 +38,28 @@ class RoadmapFragment : BaseFragment<RoadmapViewModel>(
         activity?.let {
             viewModel?.roadmap?.observe(it) { item ->
                 adapter.updateItems(item)
+                (it as MainActivity).setToolbarName(item.name)
             }
         }
 
     }
 
-    override fun onSectionClick(id: Long) {
-        Log.d("initAdapters", "onSectionClick= $id")
+    override fun onSectionClick(item: BaseItem) {
+        navigateToList(item)
     }
 
-    override fun onSubtopicClick(id: Long) {
-        Log.d("initAdapters", "onSubtopicClick= $id")
+    override fun onSubtopicClick(item: BaseItem) {
+        navigateToList(item)
     }
 
-    override fun onTopicClick(id: Long) {
-        Log.d("initAdapters", "onTopicClick= $id")
+    override fun onTopicClick(item: BaseItem) {
+        navigateToList(item)
     }
 
+    private fun navigateToList(item: BaseItem) {
+        view?.findNavController()
+            ?.navigate(RoadmapFragmentDirections.roadmapToQuestionList(item))
+
+    }
 
 }

@@ -1,11 +1,10 @@
 package com.gkreduction.data.repository.db
 
-import com.gkreduction.data.mapper.mapperRoadmapsDbToCore
-import com.gkreduction.data.mapper.transformFullRoadmapDB
+import com.gkreduction.data.mapper.*
 import com.gkreduction.data.repository.db.dao.QuestionAnswerDao
 import com.gkreduction.data.repository.db.dao.RoadmapDao
 import com.gkreduction.data.repository.network.datasource.NetworkDataStore
-import com.gkreduction.domain.entity.Roadmap
+import com.gkreduction.domain.entity.*
 import com.gkreduction.domain.repository.DbRepository
 
 class DbRepositoryImpl(
@@ -32,5 +31,15 @@ class DbRepositoryImpl(
 
     override suspend fun getRoadmapById(id: Long): Roadmap {
         return transformFullRoadmapDB(roadmapDao.getFullRoadmap(id))
+    }
+
+    override suspend fun getQuestionByItem(item: BaseItem?): List<QuestionAnswer> {
+        return when (item) {
+            is Section -> mapperQAWithSectionToModel(qaDao.getQuestionBySectionId(item.id))
+            is Topic -> mapperQAWithTopicToModel(qaDao.getQuestionByTopicId(item.id))
+            is Subtopic -> mapperQAWithSubTopicToModel(qaDao.getQuestionBySubTopicTopicId(item.id))
+            else -> emptyList()
+        }
+
     }
 }

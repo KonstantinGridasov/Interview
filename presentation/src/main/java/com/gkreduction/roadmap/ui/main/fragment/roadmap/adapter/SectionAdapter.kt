@@ -34,7 +34,7 @@ class SectionAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleSection.text = getTopicText(position)
-        holder.binding.titleSection.setOnClickListener { onSectionListener?.onSectionClick(items[position].id) }
+        holder.binding.titleSection.setOnClickListener { onSectionListener?.onSectionClick(items[position]) }
         holder.binding.rvTopics.adapter =
             TopicAdapter(items[position].topics, onTopicListener, onSubtopicListener)
 

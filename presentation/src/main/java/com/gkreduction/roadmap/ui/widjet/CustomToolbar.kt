@@ -26,17 +26,11 @@ class CustomToolbar @JvmOverloads constructor(
         image?.setOnClickListener { onItemClickListener.invoke() }
     }
 
-    fun setImageByDestination(destinationId: Int) {
-        image?.visibility = when (destinationId) {
-            R.id.categoryFragment -> VISIBLE
-            else -> GONE
-        }
-        setVisibilityToolbar(destinationId)
-    }
 
     fun setVisibilityToolbar(destinationId: Int) {
         when (destinationId) {
-            R.id.homeFragment -> this.visibility = GONE
+            R.id.roadmapFragment, R.id.listQuestionFragment -> this.visibility = VISIBLE
+            else -> this.visibility = GONE
         }
     }
 

@@ -1,5 +1,7 @@
 package com.gkreduction.roadmap.ui.main.fragment.roadmap.adapter
 
+import com.gkreduction.domain.entity.BaseItem
+
 interface OnSectionListener {
-    fun onSectionClick(id: Long)
+    fun onSectionClick(item: BaseItem)
 }

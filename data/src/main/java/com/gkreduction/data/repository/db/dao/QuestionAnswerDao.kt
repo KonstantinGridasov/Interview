@@ -8,6 +8,17 @@ import com.gkreduction.data.repository.db.entity.question.*
 
 @Dao
 interface QuestionAnswerDao {
+    @Transaction
+    @Query("SELECT * FROM qa_data_section_db WHERE dataId = :id")
+    suspend fun getQuestionBySectionId(id: Long): SectionWithQa
+
+    @Transaction
+    @Query("SELECT * FROM qa_data_topic_db WHERE dataId = :id")
+    suspend fun getQuestionByTopicId(id: Long): TopicWithQa
+
+    @Transaction
+    @Query("SELECT * FROM qa_data_subtopic_db WHERE dataId = :id")
+    suspend fun getQuestionBySubTopicTopicId(id: Long): SubtopicWithQa
 
     @Transaction
     suspend fun insert(qaList: List<QuestionAnswerRemote>) {
@@ -207,6 +218,7 @@ interface QuestionAnswerDao {
 
     @Query("SELECT EXISTS(SELECT * FROM cross_ref_qa_subtopic WHERE dataId LIKE :dataId AND qaId LIKE :qaId )")
     suspend fun isExistsQAWithSubTopicCrossRef(qaId: Long, dataId: Long): Boolean
+
 
     //endregion
 }

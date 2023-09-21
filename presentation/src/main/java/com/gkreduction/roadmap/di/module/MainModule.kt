@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.gkreduction.data.repository.db.DbRepositoryImpl
-import com.gkreduction.domain.usecase.GetRoadmapByIdUseCase
-import com.gkreduction.domain.usecase.GetRoadmapsUseCase
-import com.gkreduction.domain.usecase.UpdateQaUseCase
-import com.gkreduction.domain.usecase.UpdateRoadmapsUseCase
+import com.gkreduction.domain.usecase.*
 import com.gkreduction.roadmap.di.scope.MainScope
 import com.gkreduction.roadmap.ui.main.MainViewModel
 import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerFragment
@@ -19,6 +16,8 @@ import com.gkreduction.roadmap.ui.main.fragment.exam.ExamFragment
 import com.gkreduction.roadmap.ui.main.fragment.exam.ExamViewModel
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeFragment
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeViewModel
+import com.gkreduction.roadmap.ui.main.fragment.list.ListQuestionFragment
+import com.gkreduction.roadmap.ui.main.fragment.list.ListQuestionViewModel
 import com.gkreduction.roadmap.ui.main.fragment.question.QuestionFragment
 import com.gkreduction.roadmap.ui.main.fragment.question.QuestionViewModel
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapFragment
@@ -48,6 +47,10 @@ abstract class MainModule {
     @ContributesAndroidInjector
     internal abstract fun contributeRoadmapFragment(): RoadmapFragment
 
+    @ContributesAndroidInjector
+    internal abstract fun contributeListQuestionFragment(): ListQuestionFragment
+
+
 
     companion object {
 
@@ -68,6 +71,10 @@ abstract class MainModule {
         @MainScope
         fun providesGetRoadmapByIdUseCase(service: DbRepositoryImpl) = GetRoadmapByIdUseCase(service)
 
+        @Provides
+        @MainScope
+        fun providesGetListQuestionByItem(service: DbRepositoryImpl) = GetListQuestionByItem(service)
+
 
         @Provides
         fun provideViewModelFactory(
@@ -75,7 +82,8 @@ abstract class MainModule {
             updateRoadmapsUseCase: UpdateRoadmapsUseCase,
             updateQaUseCase: UpdateQaUseCase,
             getRoadmapsUseCase: GetRoadmapsUseCase,
-            getRoadmapByIdUseCase: GetRoadmapByIdUseCase
+            getRoadmapByIdUseCase: GetRoadmapByIdUseCase,
+            getListQuestionByItem: GetListQuestionByItem
         ): ViewModelProvider.Factory {
             return object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
@@ -116,6 +124,11 @@ abstract class MainModule {
                         modelClass.isAssignableFrom(RoadmapViewModel::class.java) ->
                             RoadmapViewModel(
                                 app,getRoadmapByIdUseCase
+                            ) as T
+
+                        modelClass.isAssignableFrom(ListQuestionViewModel::class.java) ->
+                            ListQuestionViewModel(
+                                app,getListQuestionByItem
                             ) as T
 
 

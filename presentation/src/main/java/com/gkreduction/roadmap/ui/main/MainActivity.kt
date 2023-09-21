@@ -41,7 +41,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun initListener() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.toolbar.setImageByDestination(destinationId = destination.id)
+            binding.toolbar.setVisibilityToolbar(destinationId = destination.id)
         }
     }
 

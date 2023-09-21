@@ -32,7 +32,7 @@ class SubTopicAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleSubtopic.text = getSubTopicText(position)
-        holder.binding.titleSubtopic.setOnClickListener { onSubtopicListener?.onSubtopicClick(items[position].id) }
+        holder.binding.titleSubtopic.setOnClickListener { onSubtopicListener?.onSubtopicClick(items[position]) }
     }
 
 
