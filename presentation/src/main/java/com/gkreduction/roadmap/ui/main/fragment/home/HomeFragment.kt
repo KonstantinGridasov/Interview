@@ -54,7 +54,8 @@ class HomeFragment :
     //region Navigate
 
     private fun onRoadmapClick(long: Long) {
-        Log.d(" initAdapters(it)", "onRoadmapClick= $long")
+        view?.findNavController()
+            ?.navigate(HomeFragmentDirections.homeToRoadmap(long))
     }
 
     private fun onQuestionClick(long: Long) {

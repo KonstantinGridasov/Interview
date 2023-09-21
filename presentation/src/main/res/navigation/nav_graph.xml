@@ -47,12 +47,29 @@
             android:id="@+id/home_to_exam"
             app:destination="@id/examFragment" />
 
+        <action
+            android:id="@+id/home_to_roadmap"
+            app:destination="@id/roadmapFragment">
+            <argument
+                android:name="id"
+                app:argType="long" />
+        </action>
+
     </fragment>
 
     <fragment
         android:id="@+id/examFragment"
         android:name="com.gkreduction.roadmap.ui.main.fragment.exam.ExamFragment"
         tools:layout="@layout/fragment_exam">
+
+    </fragment>
+    <fragment
+        android:id="@+id/roadmapFragment"
+        android:name="com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapFragment"
+        tools:layout="@layout/fragment_roadmap">
+        <argument
+            android:name="id"
+            app:argType="long" />
 
     </fragment>
 </navigation>

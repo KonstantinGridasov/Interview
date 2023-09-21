@@ -9,13 +9,14 @@ import com.gkreduction.data.mapper.transformRemoteRoadmapToDb
 import com.gkreduction.data.mapper.transformRemoteSectionToDb
 import com.gkreduction.data.mapper.transformRemoteSubTopicToDb
 import com.gkreduction.data.mapper.transformRemoteTopicToDb
-import com.gkreduction.data.repository.db.entity.roadmap.RoadmapDb
-import com.gkreduction.data.repository.db.entity.roadmap.SectionDb
-import com.gkreduction.data.repository.db.entity.roadmap.SubTopicDb
-import com.gkreduction.data.repository.db.entity.roadmap.TopicDb
+import com.gkreduction.data.repository.db.entity.roadmap.*
 
 @Dao
 interface RoadmapDao {
+    @Transaction
+    @Query("SELECT * FROM roadmap_db WHERE roadmapId = :id LIMIT 1")
+    suspend fun getFullRoadmap(id: Long): RoadmapFullDb
+
     @Transaction
     @Query("SELECT * FROM roadmap_db ")
     suspend fun getAllRoadmaps(): List<RoadmapDb>

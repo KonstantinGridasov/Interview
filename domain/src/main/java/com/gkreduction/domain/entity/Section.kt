@@ -1,9 +1,8 @@
 package com.gkreduction.domain.entity
 
 class Section(
-    override var id: Long,
-    override var name: String,
+    var id: Long,
+    var name: String,
     var position: Int,
-    var topics: List<BaseElement>
-) :
-    BaseElement(id, name)
+    var topics: List<Topic>
+)

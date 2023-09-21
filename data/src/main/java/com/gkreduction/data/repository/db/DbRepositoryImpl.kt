@@ -1,6 +1,7 @@
 package com.gkreduction.data.repository.db
 
 import com.gkreduction.data.mapper.mapperRoadmapsDbToCore
+import com.gkreduction.data.mapper.transformFullRoadmapDB
 import com.gkreduction.data.repository.db.dao.QuestionAnswerDao
 import com.gkreduction.data.repository.db.dao.RoadmapDao
 import com.gkreduction.data.repository.network.datasource.NetworkDataStore
@@ -27,5 +28,9 @@ class DbRepositoryImpl(
 
     override suspend fun getRoadmaps(): List<Roadmap> {
         return mapperRoadmapsDbToCore(roadmapDao.getAllRoadmaps())
+    }
+
+    override suspend fun getRoadmapById(id: Long): Roadmap {
+        return transformFullRoadmapDB(roadmapDao.getFullRoadmap(id))
     }
 }

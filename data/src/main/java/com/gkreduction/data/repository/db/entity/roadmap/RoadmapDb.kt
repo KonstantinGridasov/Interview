@@ -33,33 +33,34 @@ class SubTopicDb(
     @ColumnInfo val topicParentId: Long
 )
 
+data class RoadmapFullDb(
+    @Embedded val roadmapDb: RoadmapDb,
+    @Relation(
+        entity = SectionDb::class,
+        parentColumn = "roadmapId",
+        entityColumn = "roadmapParentId",
+
+    )
+    val sections: List<SectionWithTopic>
+)
 
 data class SectionWithTopic(
     @Embedded val section: SectionDb,
     @Relation(
-        parentColumn = "serverId",
-        entityColumn = "sectionParentId"
-    )
-    val topics: List<TopicDb>
+        entity = TopicDb::class,
+        parentColumn = "sectionId",
+        entityColumn = "sectionParentId",
 
+    )
+    val topics: List<TopicWithSubtopic>
 )
 
-
-data class RoadmapWithSection(
-    @Embedded val roadmapDb: RoadmapDb,
-    @Relation(
-        parentColumn = "roadmapId",
-        entityColumn = "roadmapParentId"
-    )
-    val sections: List<SectionDb>
-
-)
 
 data class TopicWithSubtopic(
-    @Embedded val section: TopicDb,
+    @Embedded val topic: TopicDb,
     @Relation(
         parentColumn = "topicId",
-        entityColumn = "topicParentId"
+        entityColumn = "topicParentId",
     )
     val subtopics: List<SubTopicDb>
 

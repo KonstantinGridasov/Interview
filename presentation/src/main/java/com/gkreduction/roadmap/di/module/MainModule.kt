@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.gkreduction.data.repository.db.DbRepositoryImpl
+import com.gkreduction.domain.usecase.GetRoadmapByIdUseCase
 import com.gkreduction.domain.usecase.GetRoadmapsUseCase
 import com.gkreduction.domain.usecase.UpdateQaUseCase
 import com.gkreduction.domain.usecase.UpdateRoadmapsUseCase
@@ -20,6 +21,8 @@ import com.gkreduction.roadmap.ui.main.fragment.home.HomeFragment
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeViewModel
 import com.gkreduction.roadmap.ui.main.fragment.question.QuestionFragment
 import com.gkreduction.roadmap.ui.main.fragment.question.QuestionViewModel
+import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapFragment
+import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -42,6 +45,9 @@ abstract class MainModule {
     @ContributesAndroidInjector
     internal abstract fun contributeExamFragment(): ExamFragment
 
+    @ContributesAndroidInjector
+    internal abstract fun contributeRoadmapFragment(): RoadmapFragment
+
 
     companion object {
 
@@ -58,13 +64,18 @@ abstract class MainModule {
         @MainScope
         fun providesUpdateQaUseCase(service: DbRepositoryImpl) = UpdateQaUseCase(service)
 
+        @Provides
+        @MainScope
+        fun providesGetRoadmapByIdUseCase(service: DbRepositoryImpl) = GetRoadmapByIdUseCase(service)
+
 
         @Provides
         fun provideViewModelFactory(
             app: Application,
             updateRoadmapsUseCase: UpdateRoadmapsUseCase,
             updateQaUseCase: UpdateQaUseCase,
-            getRoadmapsUseCase: GetRoadmapsUseCase
+            getRoadmapsUseCase: GetRoadmapsUseCase,
+            getRoadmapByIdUseCase: GetRoadmapByIdUseCase
         ): ViewModelProvider.Factory {
             return object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
@@ -101,6 +112,12 @@ abstract class MainModule {
                             AnswerViewModel(
                                 app
                             ) as T
+
+                        modelClass.isAssignableFrom(RoadmapViewModel::class.java) ->
+                            RoadmapViewModel(
+                                app,getRoadmapByIdUseCase
+                            ) as T
+
 
                         else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                     }
