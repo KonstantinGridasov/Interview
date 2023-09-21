@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_answer">
         <argument
             android:name="id"
-            app:argType="integer" />
+            app:argType="long" />
     </fragment>
 
     <fragment
@@ -90,6 +90,14 @@
         <argument
             android:name="item"
             app:argType="com.gkreduction.domain.entity.BaseItem" />
+
+        <action
+            android:id="@+id/list_question_to_answer"
+            app:destination="@id/answerFragment">
+            <argument
+                android:name="id"
+                app:argType="long" />
+        </action>
 
     </fragment>
 </navigation>

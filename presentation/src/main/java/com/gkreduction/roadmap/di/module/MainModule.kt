@@ -51,7 +51,6 @@ abstract class MainModule {
     internal abstract fun contributeListQuestionFragment(): ListQuestionFragment
 
 
-
     companion object {
 
         @Provides
@@ -69,11 +68,17 @@ abstract class MainModule {
 
         @Provides
         @MainScope
-        fun providesGetRoadmapByIdUseCase(service: DbRepositoryImpl) = GetRoadmapByIdUseCase(service)
+        fun providesGetRoadmapByIdUseCase(service: DbRepositoryImpl) =
+            GetRoadmapByIdUseCase(service)
 
         @Provides
         @MainScope
-        fun providesGetListQuestionByItem(service: DbRepositoryImpl) = GetListQuestionByItem(service)
+        fun providesGetListQuestionByItem(service: DbRepositoryImpl) =
+            GetListQuestionByItem(service)
+
+        @Provides
+        @MainScope
+        fun providesGetQuestionById(service: DbRepositoryImpl) = GetQuestionById(service)
 
 
         @Provides
@@ -83,7 +88,8 @@ abstract class MainModule {
             updateQaUseCase: UpdateQaUseCase,
             getRoadmapsUseCase: GetRoadmapsUseCase,
             getRoadmapByIdUseCase: GetRoadmapByIdUseCase,
-            getListQuestionByItem: GetListQuestionByItem
+            getListQuestionByItem: GetListQuestionByItem,
+            getQuestionById: GetQuestionById
         ): ViewModelProvider.Factory {
             return object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
@@ -118,17 +124,17 @@ abstract class MainModule {
                             ) as T
                         modelClass.isAssignableFrom(AnswerViewModel::class.java) ->
                             AnswerViewModel(
-                                app
+                                app, getQuestionById
                             ) as T
 
                         modelClass.isAssignableFrom(RoadmapViewModel::class.java) ->
                             RoadmapViewModel(
-                                app,getRoadmapByIdUseCase
+                                app, getRoadmapByIdUseCase
                             ) as T
 
                         modelClass.isAssignableFrom(ListQuestionViewModel::class.java) ->
                             ListQuestionViewModel(
-                                app,getListQuestionByItem
+                                app, getListQuestionByItem
                             ) as T
 
 

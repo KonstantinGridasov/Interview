@@ -1,5 +1,6 @@
 package com.gkreduction.roadmap.ui.main.fragment.list
 
+import androidx.navigation.findNavController
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentListQuestionBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
@@ -47,6 +48,8 @@ class ListQuestionFragment : BaseFragment<ListQuestionViewModel>(
     }
 
     override fun onTitleClick(id: Long) {
+        view?.findNavController()
+            ?.navigate(ListQuestionFragmentDirections.listQuestionToAnswer(id))
     }
 
 

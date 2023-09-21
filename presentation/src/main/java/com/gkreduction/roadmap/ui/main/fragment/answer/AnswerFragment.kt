@@ -1,9 +1,10 @@
 package com.gkreduction.roadmap.ui.main.fragment.answer
 
+import android.text.Html
+import android.text.Spanned
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentAnswerBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
-import com.gkreduction.roadmap.ui.main.MainActivity
 
 
 class AnswerFragment : BaseFragment<AnswerViewModel>(
@@ -13,26 +14,23 @@ class AnswerFragment : BaseFragment<AnswerViewModel>(
 
     override fun onStart() {
         super.onStart()
-        (binding as FragmentAnswerBinding).viewModel = viewModel
-
-        val args = AnswerFragmentArgs.fromBundle(
-            requireArguments()
-        )
-        getAnswer(args.id)
+        val args = AnswerFragmentArgs.fromBundle(requireArguments())
+        viewModel?.getAnswerByQuestionId(args.id)
+        initObservers()
     }
 
-    private fun getAnswer(id: Int) {
+    private fun initObservers() {
         activity?.let {
-            if (it is MainActivity)
-                viewModel?.getAnswer(id, it.data!!)
-        }
-        activity?.let {
-            if (it is MainActivity) {
-                val dataInfo = it.data?.find { item -> (item.id == id) }
-                it.setToolbarName(name = dataInfo?.category ?: "")
-
+            viewModel?.question?.observe(it) { item ->
+                (binding as FragmentAnswerBinding).textQuestion.text = item.question
+                (binding as FragmentAnswerBinding).textAnswer.text = getText(item.answer)
             }
         }
+
+    }
+
+    private fun getText(string: String): Spanned {
+        return Html.fromHtml(string, Html.FROM_HTML_MODE_LEGACY)
     }
 
 }

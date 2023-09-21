@@ -6,7 +6,7 @@ import com.gkreduction.domain.repository.DbRepository
 
 class GetListQuestionByItem(var repository: DbRepository) :
     UseCase<BaseItem, List<QuestionAnswer>> {
-    override suspend fun execute(item: BaseItem?): List<QuestionAnswer> {
-        return repository.getQuestionByItem(item)
+    override suspend fun execute(param: BaseItem?): List<QuestionAnswer> {
+        return repository.getQuestionByItem(param)
     }
 }

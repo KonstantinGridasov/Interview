@@ -29,7 +29,7 @@ class ListQuestionAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.textQuestion.text = items[position].question
-
+        holder.itemView.setOnClickListener { onTitleItemListener?.onTitleClick(items[position].id) }
     }
 
     @SuppressLint("NotifyDataSetChanged")

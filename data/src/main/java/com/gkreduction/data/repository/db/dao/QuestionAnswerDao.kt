@@ -8,6 +8,11 @@ import com.gkreduction.data.repository.db.entity.question.*
 
 @Dao
 interface QuestionAnswerDao {
+
+    @Query("SELECT * FROM qa_db WHERE qaId = :id")
+    suspend fun getQuestionById(id: Long): QuestionAnswerDb
+
+
     @Transaction
     @Query("SELECT * FROM qa_data_section_db WHERE dataId = :id")
     suspend fun getQuestionBySectionId(id: Long): SectionWithQa

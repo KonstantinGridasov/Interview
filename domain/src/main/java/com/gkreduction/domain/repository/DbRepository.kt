@@ -11,5 +11,6 @@ interface DbRepository {
     suspend fun getRoadmaps(): List<Roadmap>
     suspend fun getRoadmapById(id: Long): Roadmap
     suspend fun getQuestionByItem(item: BaseItem?): List<QuestionAnswer>
+    suspend fun getQuestionById(param: Long): QuestionAnswer
 
 }

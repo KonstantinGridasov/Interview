@@ -9,7 +9,7 @@ import com.gkreduction.domain.entity.QuestionAnswer
 fun mapperQAWithSectionToModel(items: SectionWithQa?): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()
     items?.qaRoadmaps?.forEach {
-        result.add(transformQAWithSection(it))
+        result.add(transformQADbToModel(it))
     }
     result.sortBy { it.position }
     return result
@@ -18,7 +18,7 @@ fun mapperQAWithSectionToModel(items: SectionWithQa?): List<QuestionAnswer> {
 fun mapperQAWithTopicToModel(items: TopicWithQa?): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()
     items?.qaRoadmaps?.forEach {
-        result.add(transformQAWithSection(it))
+        result.add(transformQADbToModel(it))
     }
     result.sortBy { it.position }
     return result
@@ -27,14 +27,14 @@ fun mapperQAWithTopicToModel(items: TopicWithQa?): List<QuestionAnswer> {
 fun mapperQAWithSubTopicToModel(items: SubtopicWithQa?): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()
     items?.qaRoadmaps?.forEach {
-        result.add(transformQAWithSection(it))
+        result.add(transformQADbToModel(it))
     }
     result.sortBy { it.position }
     return result
 }
 
 
-fun transformQAWithSection(item: QuestionAnswerDb) = QuestionAnswer(
+fun transformQADbToModel(item: QuestionAnswerDb) = QuestionAnswer(
     id = item.qaId,
     question = item.question,
     answer = item.answer,

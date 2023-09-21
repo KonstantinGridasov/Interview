@@ -44,12 +44,12 @@ class QuestionFragment : BaseFragment<QuestionViewModel>(
     }
 
     override fun onItemClick(id: Int, adapterPosition: Int) {
-        viewModel?.position = adapterPosition
-        view?.findNavController()?.navigate(
-            QuestionFragmentDirections.actionQuestionToAnswer(
-                id
-            )
-        )
+//        viewModel?.position = adapterPosition
+//        view?.findNavController()?.navigate(
+//            QuestionFragmentDirections.actionQuestionToAnswer(
+//                id
+//            )
+//        )
     }
 }
 

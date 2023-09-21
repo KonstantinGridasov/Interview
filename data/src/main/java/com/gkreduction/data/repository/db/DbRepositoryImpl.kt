@@ -42,4 +42,8 @@ class DbRepositoryImpl(
         }
 
     }
+
+    override suspend fun getQuestionById(param: Long): QuestionAnswer {
+        return transformQADbToModel(qaDao.getQuestionById(param))
+    }
 }
