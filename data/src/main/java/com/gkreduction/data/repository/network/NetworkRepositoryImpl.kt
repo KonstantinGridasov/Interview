@@ -4,14 +4,14 @@ import com.gkreduction.data.mapper.mapperRemoteListToModelList
 import com.gkreduction.data.repository.network.datasource.NetworkDataStore
 import com.gkreduction.domain.entity.BaseElement
 import com.gkreduction.domain.repository.NetworkRepository
+import io.reactivex.Observable
 
 class NetworkRepositoryImpl(var dataStore: NetworkDataStore) : NetworkRepository {
 
-    override suspend fun getRoadmaps(): List<BaseElement> {
-        val data = dataStore.getNetworkRoadmaps()
-        return if (data.isNotEmpty())
-            mapperRemoteListToModelList(data)
-        else emptyList()
+    override fun getRoadmaps(): Observable<List<BaseElement>> {
+        return dataStore.getNetworkRoadmaps().map {
+            mapperRemoteListToModelList(it)
+        }
 
     }
 

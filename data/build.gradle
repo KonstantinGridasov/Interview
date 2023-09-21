@@ -38,11 +38,16 @@ dependencies {
     var okHttpVersion = '4.11.0'
     var coroutines = "1.6.4"
     var room_version = '2.5.0'
+    var rxKotlinVersion = '2.4.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
 
+    //RX
+    implementation "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 //    implementation "com.google.code.gson:gson:$gson_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"

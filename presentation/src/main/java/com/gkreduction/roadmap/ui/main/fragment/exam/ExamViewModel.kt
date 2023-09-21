@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.databinding.ObservableField
 import com.gkreduction.roadmap.entity.DataInfo
-import com.gkreduction.roadmap.utils.BaseAndroidViewModel
+import com.gkreduction.roadmap.ui.base.BaseAndroidViewModel
 
 class ExamViewModel(context: Context) :
     BaseAndroidViewModel(context.applicationContext as Application) {

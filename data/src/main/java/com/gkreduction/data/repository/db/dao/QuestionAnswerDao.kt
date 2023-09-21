@@ -10,7 +10,7 @@ import com.gkreduction.data.repository.db.entity.question.*
 interface QuestionAnswerDao {
 
     @Transaction
-    suspend fun insert(qaList: List<QuestionAnswerRemote>) {
+     fun insert(qaList: List<QuestionAnswerRemote>) {
         for (qa in qaList) {
             val qaId = initQuestionAnswerDb(qa)
             for (road in qa.roadmap) {
@@ -36,7 +36,7 @@ interface QuestionAnswerDao {
 
     //region QuestionAnswerDb
     @Transaction
-    suspend fun initQuestionAnswerDb(qa: QuestionAnswerRemote): Long {
+     fun initQuestionAnswerDb(qa: QuestionAnswerRemote): Long {
         val qaDb = transformRemoteQaToDb(qa)
         return if (isExistsQa(qaDb.qaId)) {
             update(qaDb)
@@ -46,19 +46,19 @@ interface QuestionAnswerDao {
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qa: QuestionAnswerDb): Long
+     fun insert(qa: QuestionAnswerDb): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(qa: QuestionAnswerDb)
+     fun update(qa: QuestionAnswerDb)
 
     @Query("SELECT EXISTS(SELECT * FROM qa_db WHERE qaId = :qaId)")
-    suspend fun isExistsQa(qaId: Long): Boolean
+     fun isExistsQa(qaId: Long): Boolean
 
     //endregion
 
     //region QADataRoadmapDb
     @Transaction
-    suspend fun initQADataRoadmapDb(data: QADataRemote): Long {
+     fun initQADataRoadmapDb(data: QADataRemote): Long {
         val qaDataRoadmap = transformQADataToRoadmapDb(data)
         return if (isExistsQaRoadmap(qaDataRoadmap.dataId)) {
             update(qaDataRoadmap)
@@ -68,18 +68,18 @@ interface QuestionAnswerDao {
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaRoadmap: QADataRoadmapDb): Long
+     fun insert(qaRoadmap: QADataRoadmapDb): Long
 
     @Query("SELECT EXISTS(SELECT * FROM qa_data_roadmap_db WHERE dataId = :dataId)")
     fun isExistsQaRoadmap(dataId: Long): Boolean
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(qa: QADataRoadmapDb)
+     fun update(qa: QADataRoadmapDb)
     //endregion
 
     //region QADataSectionDb
     @Transaction
-    suspend fun initQADataSection(data: QADataRemote): Long {
+     fun initQADataSection(data: QADataRemote): Long {
         val qaDataSection = transformQADataToSectionDb(data)
         return if (isExistsQADataSection(qaDataSection.dataId)) {
             update(qaDataSection)
@@ -89,19 +89,19 @@ interface QuestionAnswerDao {
     }
 
     @Query("SELECT EXISTS(SELECT * FROM qa_data_section_db WHERE dataId = :dataId)")
-    suspend fun isExistsQADataSection(dataId: Long): Boolean
+     fun isExistsQADataSection(dataId: Long): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaSection: QADataSectionDb): Long
+     fun insert(qaSection: QADataSectionDb): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(qa: QADataSectionDb)
+     fun update(qa: QADataSectionDb)
 
     //endregion
 
     //region QADataTopicDb
     @Transaction
-    suspend fun initQADataTopic(data: QADataRemote): Long {
+     fun initQADataTopic(data: QADataRemote): Long {
         val qaDataTopic = transformQADataToTopicDb(data)
         return if (isExistsQADataTopic(qaDataTopic.dataId)) {
             update(qaDataTopic)
@@ -111,19 +111,19 @@ interface QuestionAnswerDao {
     }
 
     @Query("SELECT EXISTS(SELECT * FROM qa_data_topic_db WHERE dataId = :dataId)")
-    suspend fun isExistsQADataTopic(dataId: Long): Boolean
+     fun isExistsQADataTopic(dataId: Long): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaTopic: QADataTopicDb): Long
+     fun insert(qaTopic: QADataTopicDb): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(qa: QADataTopicDb)
+     fun update(qa: QADataTopicDb)
 
     //endregion
 
     //region QADataSubtopicDb
     @Transaction
-    suspend fun initQADataSubtopic(data: QADataRemote): Long {
+     fun initQADataSubtopic(data: QADataRemote): Long {
         val qaDataTopic = transformQADataToSubtopicDb(data)
         return if (isExistsQADataSubtopic(qaDataTopic.dataId)) {
             update(qaDataTopic)
@@ -133,80 +133,80 @@ interface QuestionAnswerDao {
     }
 
     @Query("SELECT EXISTS(SELECT * FROM qa_data_subtopic_db WHERE dataId = :dataId)")
-    suspend fun isExistsQADataSubtopic(dataId: Long): Boolean
+     fun isExistsQADataSubtopic(dataId: Long): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaSubtopic: QADataSubtopicDb): Long
+     fun insert(qaSubtopic: QADataSubtopicDb): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(qa: QADataSubtopicDb)
+     fun update(qa: QADataSubtopicDb)
 
     //endregion
 
     //region QAWithRoadmapCrossRef
     @Transaction
-    suspend fun initQAWithRoadmapCrossRef(qaId: Long, dataId: Long) {
+     fun initQAWithRoadmapCrossRef(qaId: Long, dataId: Long) {
         if (!isExistsQAWithRoadmapCrossRef(qaId, dataId))
             insert(QAWithRoadmapCrossRef(qaId, dataId))
 
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaCross: QAWithRoadmapCrossRef): Long
+     fun insert(qaCross: QAWithRoadmapCrossRef): Long
 
     @Query("SELECT EXISTS(SELECT * FROM cross_ref_qa_roadmap WHERE dataId LIKE :dataId AND qaId LIKE :qaId )")
-    suspend fun isExistsQAWithRoadmapCrossRef(qaId: Long, dataId: Long): Boolean
+     fun isExistsQAWithRoadmapCrossRef(qaId: Long, dataId: Long): Boolean
 
     //endregion
 
 
     //region QAWithSectionCrossRef
     @Transaction
-    suspend fun initQAWithSectionCrossRef(qaId: Long, dataId: Long) {
+     fun initQAWithSectionCrossRef(qaId: Long, dataId: Long) {
         if (!isExistsQAWithSectionCrossRef(qaId, dataId))
             insert(QAWithSectionCrossRef(qaId, dataId))
 
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaCross: QAWithSectionCrossRef): Long
+     fun insert(qaCross: QAWithSectionCrossRef): Long
 
     @Query("SELECT EXISTS(SELECT * FROM cross_ref_qa_section WHERE dataId LIKE :dataId AND qaId LIKE :qaId )")
-    suspend fun isExistsQAWithSectionCrossRef(qaId: Long, dataId: Long): Boolean
+     fun isExistsQAWithSectionCrossRef(qaId: Long, dataId: Long): Boolean
 
     //endregion
 
 
     //region QAWithTopicCrossRef
     @Transaction
-    suspend fun initQAWithTopicCrossRef(qaId: Long, dataId: Long) {
+     fun initQAWithTopicCrossRef(qaId: Long, dataId: Long) {
         if (!isExistsQAWithTopicCrossRef(qaId, dataId))
             insert(QAWithTopicCrossRef(qaId, dataId))
 
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaCross: QAWithTopicCrossRef): Long
+     fun insert(qaCross: QAWithTopicCrossRef): Long
 
     @Query("SELECT EXISTS(SELECT * FROM cross_ref_qa_topic WHERE dataId LIKE :dataId AND qaId LIKE :qaId )")
-    suspend fun isExistsQAWithTopicCrossRef(qaId: Long, dataId: Long): Boolean
+     fun isExistsQAWithTopicCrossRef(qaId: Long, dataId: Long): Boolean
 
     //endregion
 
 
     //region QAWithSubTopicCrossRef
     @Transaction
-    suspend fun initQAWithSubTopicCrossRef(qaId: Long, dataId: Long) {
+     fun initQAWithSubTopicCrossRef(qaId: Long, dataId: Long) {
         if (!isExistsQAWithSubTopicCrossRef(qaId, dataId))
             insert(QAWithSubTopicCrossRef(qaId, dataId))
 
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(qaCross: QAWithSubTopicCrossRef): Long
+     fun insert(qaCross: QAWithSubTopicCrossRef): Long
 
     @Query("SELECT EXISTS(SELECT * FROM cross_ref_qa_subtopic WHERE dataId LIKE :dataId AND qaId LIKE :qaId )")
-    suspend fun isExistsQAWithSubTopicCrossRef(qaId: Long, dataId: Long): Boolean
+     fun isExistsQAWithSubTopicCrossRef(qaId: Long, dataId: Long): Boolean
 
     //endregion
 }

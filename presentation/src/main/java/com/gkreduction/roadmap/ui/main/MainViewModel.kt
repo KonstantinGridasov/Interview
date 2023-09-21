@@ -6,7 +6,7 @@ import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.gkreduction.roadmap.entity.Category
 import com.gkreduction.roadmap.entity.DataInfo
-import com.gkreduction.roadmap.utils.BaseAndroidViewModel
+import com.gkreduction.roadmap.ui.base.BaseAndroidViewModel
 import com.gkreduction.roadmap.utils.getPriority
 import com.gkreduction.roadmap.utils.readerJson
 

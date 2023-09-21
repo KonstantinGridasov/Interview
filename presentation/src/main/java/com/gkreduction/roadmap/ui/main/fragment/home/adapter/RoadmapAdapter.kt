@@ -9,14 +9,11 @@ import com.gkreduction.domain.entity.Roadmap
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ItemRoadmapBinding
 
-class RoadmapAdapter(
-    var onRoadmapClick: (id: Long) -> Unit,
-    var onTheoryClick: (id: Long) -> Unit,
-    var onQuestionClick: (id: Long) -> Unit
-) : RecyclerView.Adapter<RoadmapAdapter.ViewHolder>() {
-
+class RoadmapAdapter : RecyclerView.Adapter<RoadmapAdapter.ViewHolder>() {
     private var items: List<Roadmap> = emptyList()
-
+    private var onRoadmapClick: ((id: Long) -> Unit)? = null
+    private var onTheoryClick: ((id: Long) -> Unit)? = null
+    private var onQuestionClick: ((id: Long) -> Unit)? = null
 
     inner class ViewHolder(val binding: ItemRoadmapBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -34,9 +31,9 @@ class RoadmapAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleRoadmap.text = items[position].name
 
-        holder.binding.subItemRoadmap.setOnClickListener { onRoadmapClick.invoke(items[position].id) }
-        holder.binding.subItemTheory.setOnClickListener { onTheoryClick.invoke(items[position].id) }
-        holder.binding.subItemQuestion.setOnClickListener { onQuestionClick.invoke(items[position].id) }
+        holder.binding.subItemRoadmap.setOnClickListener { onRoadmapClick?.invoke(items[position].id) }
+        holder.binding.subItemTheory.setOnClickListener { onTheoryClick?.invoke(items[position].id) }
+        holder.binding.subItemQuestion.setOnClickListener { onQuestionClick?.invoke(items[position].id) }
     }
 
     @SuppressLint("NotifyDataSetChanged")

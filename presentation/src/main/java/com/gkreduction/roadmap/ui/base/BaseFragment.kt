@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import com.gkreduction.roadmap.utils.BaseAndroidViewModel
 import com.gkreduction.roadmap.utils.lazyThreadSafetyNone
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject

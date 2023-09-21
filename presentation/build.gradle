@@ -22,6 +22,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    kotlinOptions {
+        freeCompilerArgs += [
+                "-Xjvm-default=all",
+        ]
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -41,6 +46,12 @@ dependencies {
     var retrofitVersion = '2.9.0'
     var okHttpVersion = '4.11.0'
     var room_version = '2.5.0'
+    var rxKotlinVersion = '2.4.0'
+    var rxAndroidVersion = '2.1.1'
+    var rxJavaVersion = '2.2.21'
+
+    implementation "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"

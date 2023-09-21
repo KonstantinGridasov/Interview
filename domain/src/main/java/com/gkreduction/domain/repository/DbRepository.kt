@@ -1,11 +1,12 @@
 package com.gkreduction.domain.repository
 
 import com.gkreduction.domain.entity.Roadmap
+import io.reactivex.Observable
 
 interface DbRepository {
-    suspend fun updateQuestion(): Boolean
+    fun updateQuestion(): Observable<Boolean>
 
-    suspend fun updateDb(): Boolean
-    suspend fun getRoadmaps(): List<Roadmap>
+    fun updateDb(): Observable<Boolean>
+    fun getRoadmaps(): Observable<List<Roadmap>>
 
 }

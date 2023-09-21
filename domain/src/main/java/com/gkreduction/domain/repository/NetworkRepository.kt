@@ -2,7 +2,8 @@ package com.gkreduction.domain.repository
 
 import com.gkreduction.domain.entity.BaseElement
 import com.gkreduction.domain.entity.Roadmap
+import io.reactivex.Observable
 
 interface NetworkRepository {
-    suspend fun getRoadmaps(): List<BaseElement>
+     fun getRoadmaps(): Observable<List<BaseElement>>
 }

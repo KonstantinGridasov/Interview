@@ -13,7 +13,7 @@
             name="listener"
             type="android.view.View.OnClickListener" />
 
-         </data>
+    </data>
 
 
     <LinearLayout
@@ -52,6 +52,7 @@
             android:layout_marginStart="@dimen/_5gkdp"
             android:layout_marginTop="@dimen/_20gkdp"
             android:layout_marginEnd="@dimen/_5gkdp"
+            app:items_roadmap="@{viewModel.roadmaps}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_roadmap" />
 
