@@ -59,7 +59,7 @@ class HomeFragment :
     }
 
     private fun onQuestionClick(long: Long) {
-        Log.d("initAdapters", "onQuestionClick= $long")
+        navigateToExam()
     }
 
     private fun onTheoryClick(long: Long) {

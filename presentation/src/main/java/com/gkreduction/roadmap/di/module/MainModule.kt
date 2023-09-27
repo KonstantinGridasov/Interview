@@ -7,6 +7,8 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.gkreduction.data.repository.db.DbRepositoryImpl
 import com.gkreduction.domain.usecase.*
 import com.gkreduction.roadmap.di.scope.MainScope
+import com.gkreduction.roadmap.ui.dialog.HelpDialog
+import com.gkreduction.roadmap.ui.dialog.HelpDialogViewModel
 import com.gkreduction.roadmap.ui.main.MainViewModel
 import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerFragment
 import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerViewModel
@@ -50,6 +52,8 @@ abstract class MainModule {
     @ContributesAndroidInjector
     internal abstract fun contributeListQuestionFragment(): ListQuestionFragment
 
+    @ContributesAndroidInjector
+    abstract fun contributeHelpDialog(): HelpDialog
 
     companion object {
 
@@ -82,6 +86,11 @@ abstract class MainModule {
 
 
         @Provides
+        @MainScope
+        fun providesGetRandomQuestion(service: DbRepositoryImpl) = GetRandomQuestion(service)
+
+
+        @Provides
         fun provideViewModelFactory(
             app: Application,
             updateRoadmapsUseCase: UpdateRoadmapsUseCase,
@@ -89,7 +98,8 @@ abstract class MainModule {
             getRoadmapsUseCase: GetRoadmapsUseCase,
             getRoadmapByIdUseCase: GetRoadmapByIdUseCase,
             getListQuestionByItem: GetListQuestionByItem,
-            getQuestionById: GetQuestionById
+            getQuestionById: GetQuestionById,
+            getRandomQuestion: GetRandomQuestion
         ): ViewModelProvider.Factory {
             return object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
@@ -100,7 +110,7 @@ abstract class MainModule {
                     return when {
                         modelClass.isAssignableFrom(ExamViewModel::class.java) ->
                             ExamViewModel(
-                                app
+                                app, getRandomQuestion, getQuestionById
                             ) as T
                         modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                             HomeViewModel(
@@ -135,6 +145,11 @@ abstract class MainModule {
                         modelClass.isAssignableFrom(ListQuestionViewModel::class.java) ->
                             ListQuestionViewModel(
                                 app, getListQuestionByItem
+                            ) as T
+
+                        modelClass.isAssignableFrom(HelpDialogViewModel::class.java) ->
+                            HelpDialogViewModel(
+                                app,
                             ) as T
 
 

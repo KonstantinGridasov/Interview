@@ -12,6 +12,8 @@ interface QuestionAnswerDao {
     @Query("SELECT * FROM qa_db WHERE qaId = :id")
     suspend fun getQuestionById(id: Long): QuestionAnswerDb
 
+    @Query("SELECT * FROM qa_db ORDER BY RANDOM() LIMIT :size")
+    suspend fun getRandomQuestion(size: Int): List<QuestionAnswerDb>?
 
     @Transaction
     @Query("SELECT * FROM qa_data_section_db WHERE dataId = :id")

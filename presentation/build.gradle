@@ -7,7 +7,7 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.gkredaction.roadmap"
+        applicationId "com.gkreduction.roadmap"
         minSdkVersion 26
         targetSdkVersion 33
         versionCode 1

@@ -61,6 +61,13 @@
         android:id="@+id/examFragment"
         android:name="com.gkreduction.roadmap.ui.main.fragment.exam.ExamFragment"
         tools:layout="@layout/fragment_exam">
+        <action
+            android:id="@+id/exam_to_answer"
+            app:destination="@id/questionFragment">
+            <argument
+                android:name="id"
+                app:argType="long" />
+        </action>
 
     </fragment>
     <fragment

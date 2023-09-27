@@ -5,9 +5,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ActivityMainBinding
 import com.gkreduction.roadmap.entity.DataInfo
+import com.gkreduction.roadmap.ui.dialog.HelpDialog
 import com.gkreduction.roadmap.utils.lazyThreadSafetyNone
 import com.gkreduction.roadmap.utils.readerJson
 import dagger.android.AndroidInjection
@@ -47,6 +49,11 @@ class MainActivity : DaggerAppCompatActivity() {
 
     fun setToolbarName(name: String) {
         binding.toolbar.setTextName(name)
+    }
+
+    fun showDialogNotLogin(item: QuestionAnswer) {
+        val dialog = HelpDialog().setParams(item.answer)
+        dialog.show(supportFragmentManager, "")
     }
 
 

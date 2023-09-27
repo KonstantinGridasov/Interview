@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -17,65 +18,190 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/next"
-            android:layout_marginBottom="@dimen/_5gkdp"
-            android:background="@color/colorBackgroundDay">
+        <LinearLayout
+            android:id="@+id/block_information"
+            android:layout_width="@dimen/_100gkdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/_10gkdp"
+            android:layout_marginTop="@dimen/_5gkdp"
+            android:background="@drawable/background_rounded_item"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5gkdp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textQuestion"
+                    android:id="@+id/title_skip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:fontFamily="@font/comfortaa_bold"
-                    android:onClick="@{listener}"
                     android:padding="@dimen/_5gkdp"
-                    android:text="@{viewModel.question}"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_11gkdp" />
-
+                    android:text="Skipped = "
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8gkdp" />
 
                 <TextView
-                    android:id="@+id/textAnswer"
+                    android:id="@+id/skip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_5gkdp"
-                    android:background="@color/white"
-                    android:fontFamily="@font/comfortaa_regular"
-                    android:paddingStart="@dimen/_5gkdp"
-                    android:paddingEnd="@dimen/_5gkdp"
-                    android:text="@{viewModel.answer}"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10gkdp"
-                    android:visibility="gone" />
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="@color/color_sub_item"
+                    android:textSize="@dimen/_8gkdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/title_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="@dimen/_5gkdp"
+                    android:text="Right = "
+                    android:textColor="@color/color_green"
+                    android:textSize="@dimen/_8gkdp" />
+
+                <TextView
+                    android:id="@+id/right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="@color/color_sub_item"
+                    android:textSize="@dimen/_8gkdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/title_bad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="@dimen/_5gkdp"
+                    android:text="Bad = "
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/_8gkdp" />
+
+                <TextView
+                    android:id="@+id/bad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="@color/color_sub_item"
+                    android:textSize="@dimen/_8gkdp" />
 
 
             </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/next"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_skip"
+            android:layout_width="@dimen/_40gkdp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/_5gkdp"
-            android:background="@color/white"
-            android:fontFamily="@font/comfortaa_bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5gkdp"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            android:background="@drawable/background_rounded_item"
             android:onClick="@{listener}"
-            android:padding="@dimen/_5gkdp"
-            android:text="Next"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_11gkdp" />
+            android:text="Skip"
+
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/block_question"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100gkdp"
+            android:layout_below="@id/block_information"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_10gkdp"
+            android:layout_marginTop="@dimen/_40gkdp"
+            android:layout_marginEnd="@dimen/_10gkdp"
+            app:cardCornerRadius="@dimen/_5gkdp">
+
+            <RelativeLayout
+                android:id="@+id/rl_question"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/text_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/colorPrimary"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:gravity="center"
+                    android:padding="@dimen/_5gkdp"
+                    android:text="Corutunes"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13gkdp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25gkdp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="@dimen/_5gkdp"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    android:onClick="@{listener}"
+
+                    android:src="@drawable/ic_help" />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_right"
+            android:layout_width="@dimen/_50gkdp"
+            android:layout_height="@dimen/_25gkdp"
+            android:layout_below="@id/block_question"
+            android:layout_alignStart="@id/block_question"
+            android:layout_marginTop="@dimen/_40gkdp"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/background_rounded_item"
+
+            android:onClick="@{listener}"
+            android:scaleType="center"
+            android:src="@drawable/ic_right" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_bad"
+            android:layout_width="@dimen/_50gkdp"
+            android:layout_height="@dimen/_25gkdp"
+            android:layout_below="@id/block_question"
+            android:layout_alignEnd="@id/block_question"
+            android:layout_marginTop="@dimen/_40gkdp"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/background_rounded_item"
+
+            android:onClick="@{listener}"
+            android:scaleType="center"
+            android:src="@drawable/ic_bad" />
     </RelativeLayout>
 
 </layout>

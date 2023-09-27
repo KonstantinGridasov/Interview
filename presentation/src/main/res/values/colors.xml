@@ -9,7 +9,8 @@
 
     <color name="color_white">#FFFFFF</color>
 
-
+    <color name="color_green">#B7E79C</color>
+    <color name="color_red">#FFE82E2E</color>
 
     <color name="red">#FFE82E2E</color>
 

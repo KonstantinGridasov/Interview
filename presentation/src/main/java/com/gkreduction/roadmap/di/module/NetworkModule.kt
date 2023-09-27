@@ -1,5 +1,6 @@
 package com.gkreduction.roadmap.di.module
 
+import com.gkreduction.data.ApiConstants.Companion.API_MY_SERVER
 import com.gkreduction.data.repository.network.NetworkApi
 import com.gkreduction.data.repository.network.NetworkRepositoryImpl
 import com.gkreduction.data.repository.network.datasource.NetworkDataStore
@@ -30,7 +31,7 @@ class NetworkModule {
         okHttpClient: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://presentcelery.backendless.app/")
+            .baseUrl(API_MY_SERVER)
             .addConverterFactory(gsonConverterFactory)
             .client(okHttpClient)
             .build()

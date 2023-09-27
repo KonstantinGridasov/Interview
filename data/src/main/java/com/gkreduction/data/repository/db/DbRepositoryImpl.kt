@@ -46,4 +46,8 @@ class DbRepositoryImpl(
     override suspend fun getQuestionById(param: Long): QuestionAnswer {
         return transformQADbToModel(qaDao.getQuestionById(param))
     }
+
+    override suspend fun getRandomQuestion(i: Int): List<QuestionAnswer> {
+        return transformQAListDbToModel(qaDao.getRandomQuestion(i))
+    }
 }

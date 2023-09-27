@@ -33,6 +33,14 @@ fun mapperQAWithSubTopicToModel(items: SubtopicWithQa?): List<QuestionAnswer> {
     return result
 }
 
+fun transformQAListDbToModel(list: List<QuestionAnswerDb>?): List<QuestionAnswer> {
+    val result = ArrayList<QuestionAnswer>()
+    list?.forEach {
+        result.add(transformQADbToModel(it))
+    }
+    return result
+}
+
 
 fun transformQADbToModel(item: QuestionAnswerDb) = QuestionAnswer(
     id = item.qaId,
