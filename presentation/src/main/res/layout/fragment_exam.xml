@@ -47,9 +47,10 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8gkdp" />
 
+
                 <TextView
                     android:id="@+id/skip"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/comfortaa_bold"
                     android:textColor="@color/color_sub_item"
@@ -159,18 +160,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_25gkdp"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="@dimen/_5gkdp"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_5gkdp"
                     android:adjustViewBounds="true"
-                    android:scaleType="center"
                     android:onClick="@{listener}"
+                    android:scaleType="center"
 
                     android:src="@drawable/ic_help" />
             </RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-
 
 
         <androidx.appcompat.widget.AppCompatImageView

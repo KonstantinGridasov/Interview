@@ -1,4 +1,4 @@
-package com.gkreduction.roadmap.ui.dialog
+package com.gkreduction.roadmap.ui.dialog.finish
 
 import android.app.Application
 import android.content.Context
@@ -9,7 +9,7 @@ import com.gkreduction.domain.usecase.GetQuestionById
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
 import kotlinx.coroutines.launch
 
-class HelpDialogViewModel(
+class FinishViewModel(
     context: Context,
 ) : BaseAndroidViewModel(context.applicationContext as Application) {
 

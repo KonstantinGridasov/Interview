@@ -41,6 +41,8 @@ dependencies {
     var retrofitVersion = '2.9.0'
     var okHttpVersion = '4.11.0'
     var room_version = '2.5.0'
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"

@@ -2,6 +2,7 @@ package com.gkreduction.roadmap.ui.main
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.InverseBindingListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -9,7 +10,8 @@ import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ActivityMainBinding
 import com.gkreduction.roadmap.entity.DataInfo
-import com.gkreduction.roadmap.ui.dialog.HelpDialog
+import com.gkreduction.roadmap.ui.dialog.finish.FinishDialog
+import com.gkreduction.roadmap.ui.dialog.help.HelpDialog
 import com.gkreduction.roadmap.utils.lazyThreadSafetyNone
 import com.gkreduction.roadmap.utils.readerJson
 import dagger.android.AndroidInjection
@@ -51,10 +53,14 @@ class MainActivity : DaggerAppCompatActivity() {
         binding.toolbar.setTextName(name)
     }
 
-    fun showDialogNotLogin(item: QuestionAnswer) {
-        val dialog = HelpDialog().setParams(item.answer)
+    fun showDialogHelp(item: QuestionAnswer, listener: () -> Unit) {
+        val dialog = HelpDialog().setParams(item.answer, listener)
         dialog.show(supportFragmentManager, "")
     }
 
+    fun showDialogFinish(status: Boolean, listener: () -> Unit) {
+        val dialog = FinishDialog().setParams(status, listener)
+        dialog.show(supportFragmentManager, "")
+    }
 
 }

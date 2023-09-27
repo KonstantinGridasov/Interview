@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isSuccess"
+            type="java.lang.Boolean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20gkdp"
+            android:layout_above="@id/animation"
+            android:layout_alignEnd="@id/animation"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_close" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250gkdp"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_5gkdp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="animation_success.json"
+            app:lottie_loop="true" />
+
+
+    </RelativeLayout>
+
+</layout>

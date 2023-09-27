@@ -7,8 +7,10 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.gkreduction.data.repository.db.DbRepositoryImpl
 import com.gkreduction.domain.usecase.*
 import com.gkreduction.roadmap.di.scope.MainScope
-import com.gkreduction.roadmap.ui.dialog.HelpDialog
-import com.gkreduction.roadmap.ui.dialog.HelpDialogViewModel
+import com.gkreduction.roadmap.ui.dialog.finish.FinishDialog
+import com.gkreduction.roadmap.ui.dialog.finish.FinishViewModel
+import com.gkreduction.roadmap.ui.dialog.help.HelpDialog
+import com.gkreduction.roadmap.ui.dialog.help.HelpDialogViewModel
 import com.gkreduction.roadmap.ui.main.MainViewModel
 import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerFragment
 import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerViewModel
@@ -54,6 +56,9 @@ abstract class MainModule {
 
     @ContributesAndroidInjector
     abstract fun contributeHelpDialog(): HelpDialog
+
+    @ContributesAndroidInjector
+    abstract fun contributeFinishDialog(): FinishDialog
 
     companion object {
 
@@ -149,6 +154,11 @@ abstract class MainModule {
 
                         modelClass.isAssignableFrom(HelpDialogViewModel::class.java) ->
                             HelpDialogViewModel(
+                                app,
+                            ) as T
+
+                        modelClass.isAssignableFrom(FinishViewModel::class.java) ->
+                            FinishViewModel(
                                 app,
                             ) as T
 
