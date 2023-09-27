@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
     </data>
 
     <LinearLayout
-        android:id="@+id/root_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_2gkdp"
-        android:background="@color/white"
-        android:padding="@dimen/_5gkdp">
+        android:layout_marginTop="@dimen/_8gkdp"
+        android:background="@drawable/background_rounded_item"
+        android:gravity="start|center_vertical"
+        android:orientation="horizontal">
+
 
         <TextView
-            android:id="@+id/textData"
+            android:id="@+id/text_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start|center_vertical"
-            android:fontFamily="@font/comfortaa_bold"
-            android:justificationMode="inter_word"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10gkdp" />
+            android:layout_marginStart="@dimen/_4gkdp"
+            android:padding="@dimen/_3gkdp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/comfortaa_regular"
+            android:gravity="start|center_vertical"
+            android:text="@string/category"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8gkdp" />
+
     </LinearLayout>
-
-
 </layout>

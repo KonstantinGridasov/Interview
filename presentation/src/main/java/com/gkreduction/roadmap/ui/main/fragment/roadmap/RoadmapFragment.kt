@@ -58,7 +58,7 @@ class RoadmapFragment : BaseFragment<RoadmapViewModel>(
 
     private fun navigateToList(item: BaseItem) {
         view?.findNavController()
-            ?.navigate(RoadmapFragmentDirections.roadmapToQuestionList(item))
+            ?.navigate(RoadmapFragmentDirections.roadmapToQuestions(item))
 
     }
 

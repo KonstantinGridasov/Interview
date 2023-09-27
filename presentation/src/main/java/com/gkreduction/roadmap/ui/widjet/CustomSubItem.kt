@@ -43,12 +43,6 @@ class CustomSubItem @JvmOverloads constructor(
 
     }
 
-    fun setImageByDestination(destinationId: Int) {
-        image?.visibility = when (destinationId) {
-            R.id.categoryFragment -> VISIBLE
-            else -> GONE
-        }
-    }
 
 
 }

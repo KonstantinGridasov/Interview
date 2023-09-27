@@ -29,7 +29,7 @@ class CustomToolbar @JvmOverloads constructor(
 
     fun setVisibilityToolbar(destinationId: Int) {
         when (destinationId) {
-            R.id.roadmapFragment, R.id.listQuestionFragment -> this.visibility = VISIBLE
+            R.id.roadmapFragment, R.id.questionFragment -> this.visibility = VISIBLE
             else -> this.visibility = GONE
         }
     }

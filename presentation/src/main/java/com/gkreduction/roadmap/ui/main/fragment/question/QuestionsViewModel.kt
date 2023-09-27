@@ -1,4 +1,4 @@
-package com.gkreduction.roadmap.ui.main.fragment.list
+package com.gkreduction.roadmap.ui.main.fragment.question
 
 import android.app.Application
 import android.content.Context
@@ -6,13 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gkreduction.domain.entity.BaseItem
 import com.gkreduction.domain.entity.QuestionAnswer
-import com.gkreduction.domain.usecase.GetListQuestionByItem
+import com.gkreduction.domain.usecase.GetListQuestionsByItem
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
 import kotlinx.coroutines.launch
 
-class ListQuestionViewModel(
+class QuestionsViewModel(
     context: Context,
-    var getListQuestionByItem: GetListQuestionByItem
+    var getListQuestionByItem: GetListQuestionsByItem
 ) :
     BaseAndroidViewModel(context.applicationContext as Application) {
     var roadmap = MutableLiveData<List<QuestionAnswer>>()

@@ -63,7 +63,7 @@ class HomeFragment :
     }
 
     private fun onTheoryClick(long: Long) {
-        Log.d("initAdapters", "onTheoryClick= $long")
+
     }
 
     private fun navigateToExam() {
@@ -74,7 +74,7 @@ class HomeFragment :
 
     private fun navigateToCategory() {
         view?.findNavController()
-            ?.navigate(HomeFragmentDirections.homeToCategory())
+            ?.navigate(HomeFragmentDirections.homeToExam())
 
     }
     //endregion

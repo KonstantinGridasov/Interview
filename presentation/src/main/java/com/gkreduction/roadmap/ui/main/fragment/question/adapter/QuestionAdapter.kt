@@ -1,32 +1,22 @@
 package com.gkreduction.roadmap.ui.main.fragment.question.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ItemQuestionBinding
-import com.gkreduction.roadmap.entity.Question
 
 class QuestionAdapter(
-    private var items: List<Question>,
-    private val listener: ListenerList?
+    var onTitleItemListener: OnTitleItemListener?
 ) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
-    interface ListenerList {
-        fun onItemClick(id: Int, adapterPosition: Int)
-    }
+    private var items: List<QuestionAnswer> = emptyList()
 
     inner class ViewHolder(val binding: ItemQuestionBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        init {
-            itemView.setOnClickListener {
-                listener!!.onItemClick(
-                    items[adapterPosition].id,
-                    adapterPosition
-                )
-            }
-        }
-    }
+        RecyclerView.ViewHolder(binding.root)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -38,8 +28,15 @@ class QuestionAdapter(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.textData.text = items[position].question
-        holder.binding.executePendingBindings()
-
+        holder.binding.textQuestion.text = items[position].question
+        holder.itemView.setOnClickListener { onTitleItemListener?.onTitleClick(items[position].id) }
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateItems(items: List<QuestionAnswer>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
+
+
 }

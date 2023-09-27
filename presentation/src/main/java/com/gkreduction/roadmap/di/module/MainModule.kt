@@ -14,16 +14,12 @@ import com.gkreduction.roadmap.ui.dialog.help.HelpDialogViewModel
 import com.gkreduction.roadmap.ui.main.MainViewModel
 import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerFragment
 import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerViewModel
-import com.gkreduction.roadmap.ui.main.fragment.category.CategoryFragment
-import com.gkreduction.roadmap.ui.main.fragment.category.CategoryViewModel
 import com.gkreduction.roadmap.ui.main.fragment.exam.ExamFragment
 import com.gkreduction.roadmap.ui.main.fragment.exam.ExamViewModel
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeFragment
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeViewModel
-import com.gkreduction.roadmap.ui.main.fragment.list.ListQuestionFragment
-import com.gkreduction.roadmap.ui.main.fragment.list.ListQuestionViewModel
-import com.gkreduction.roadmap.ui.main.fragment.question.QuestionFragment
-import com.gkreduction.roadmap.ui.main.fragment.question.QuestionViewModel
+import com.gkreduction.roadmap.ui.main.fragment.question.QuestionsFragment
+import com.gkreduction.roadmap.ui.main.fragment.question.QuestionsViewModel
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapFragment
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapViewModel
 import dagger.Module
@@ -32,13 +28,7 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class MainModule {
-
-    @ContributesAndroidInjector
-    internal abstract fun contributeCategoryFragment(): CategoryFragment
-
-    @ContributesAndroidInjector
-    internal abstract fun contributeQuestionFragment(): QuestionFragment
-
+    
     @ContributesAndroidInjector
     internal abstract fun contributeAnswerFragment(): AnswerFragment
 
@@ -52,7 +42,7 @@ abstract class MainModule {
     internal abstract fun contributeRoadmapFragment(): RoadmapFragment
 
     @ContributesAndroidInjector
-    internal abstract fun contributeListQuestionFragment(): ListQuestionFragment
+    internal abstract fun contributeQuestionsFragment(): QuestionsFragment
 
     @ContributesAndroidInjector
     abstract fun contributeHelpDialog(): HelpDialog
@@ -82,8 +72,8 @@ abstract class MainModule {
 
         @Provides
         @MainScope
-        fun providesGetListQuestionByItem(service: DbRepositoryImpl) =
-            GetListQuestionByItem(service)
+        fun providesGetListTheoryByItem(service: DbRepositoryImpl) =
+            GetListQuestionsByItem(service)
 
         @Provides
         @MainScope
@@ -102,7 +92,7 @@ abstract class MainModule {
             updateQaUseCase: UpdateQaUseCase,
             getRoadmapsUseCase: GetRoadmapsUseCase,
             getRoadmapByIdUseCase: GetRoadmapByIdUseCase,
-            getListQuestionByItem: GetListQuestionByItem,
+            getListQuestionByItem: GetListQuestionsByItem,
             getQuestionById: GetQuestionById,
             getRandomQuestion: GetRandomQuestion
         ): ViewModelProvider.Factory {
@@ -128,15 +118,6 @@ abstract class MainModule {
                                 app
                             ) as T
 
-                        modelClass.isAssignableFrom(CategoryViewModel::class.java) ->
-                            CategoryViewModel(
-                                app
-                            ) as T
-
-                        modelClass.isAssignableFrom(QuestionViewModel::class.java) ->
-                            QuestionViewModel(
-                                app
-                            ) as T
                         modelClass.isAssignableFrom(AnswerViewModel::class.java) ->
                             AnswerViewModel(
                                 app, getQuestionById
@@ -147,8 +128,8 @@ abstract class MainModule {
                                 app, getRoadmapByIdUseCase
                             ) as T
 
-                        modelClass.isAssignableFrom(ListQuestionViewModel::class.java) ->
-                            ListQuestionViewModel(
+                        modelClass.isAssignableFrom(QuestionsViewModel::class.java) ->
+                            QuestionsViewModel(
                                 app, getListQuestionByItem
                             ) as T
 

@@ -1,23 +1,23 @@
-package com.gkreduction.roadmap.ui.main.fragment.list
+package com.gkreduction.roadmap.ui.main.fragment.question
 
 import androidx.navigation.findNavController
 import com.gkreduction.roadmap.R
-import com.gkreduction.roadmap.databinding.FragmentListQuestionBinding
+import com.gkreduction.roadmap.databinding.FragmentQuestionsBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
 import com.gkreduction.roadmap.ui.main.MainActivity
-import com.gkreduction.roadmap.ui.main.fragment.list.adapter.ListQuestionAdapter
-import com.gkreduction.roadmap.ui.main.fragment.list.adapter.OnTitleItemListener
+import com.gkreduction.roadmap.ui.main.fragment.question.adapter.OnTitleItemListener
+import com.gkreduction.roadmap.ui.main.fragment.question.adapter.QuestionAdapter
 
 
-class ListQuestionFragment : BaseFragment<ListQuestionViewModel>(
-    R.layout.fragment_list_question,
-    ListQuestionViewModel::class.java
+class QuestionsFragment : BaseFragment<QuestionsViewModel>(
+    R.layout.fragment_questions,
+    QuestionsViewModel::class.java
 ), OnTitleItemListener {
-    lateinit var adapter: ListQuestionAdapter
+    lateinit var adapter: QuestionAdapter
     override fun onStart() {
         super.onStart()
 
-        val item = ListQuestionFragmentArgs.fromBundle(requireArguments()).item
+        val item = QuestionsFragmentArgs.fromBundle(requireArguments()).item
         viewModel?.getQuestionsById(item)
         setToolbarName(item.name)
         initAdapters()
@@ -33,8 +33,8 @@ class ListQuestionFragment : BaseFragment<ListQuestionViewModel>(
 
 
     private fun initAdapters() {
-        adapter = ListQuestionAdapter(this)
-        (binding as FragmentListQuestionBinding).rvListItem.adapter = adapter
+        adapter = QuestionAdapter(this)
+        (binding as FragmentQuestionsBinding).rvListItem.adapter = adapter
     }
 
 
@@ -49,7 +49,7 @@ class ListQuestionFragment : BaseFragment<ListQuestionViewModel>(
 
     override fun onTitleClick(id: Long) {
         view?.findNavController()
-            ?.navigate(ListQuestionFragmentDirections.listQuestionToAnswer(id))
+            ?.navigate(QuestionsFragmentDirections.questionToAnswer(id))
     }
 
 

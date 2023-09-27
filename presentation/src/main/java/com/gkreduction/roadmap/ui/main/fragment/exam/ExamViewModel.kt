@@ -2,8 +2,6 @@ package com.gkreduction.roadmap.ui.main.fragment.exam
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
-import androidx.core.os.persistableBundleOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gkreduction.domain.entity.QuestionAnswer
