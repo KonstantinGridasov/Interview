@@ -4,24 +4,59 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.gkreduction.domain.entity.BaseItem
 import com.gkreduction.domain.entity.QuestionAnswer
-import com.gkreduction.domain.usecase.GetQuestionById
+import com.gkreduction.domain.usecase.GetListQuestionsByItem
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
 import kotlinx.coroutines.launch
 
-class AnswerViewModel(context: Context, var getQuestionById: GetQuestionById) :
+class AnswerViewModel(context: Context, var getListQuestionByItem: GetListQuestionsByItem) :
     BaseAndroidViewModel(context.applicationContext as Application) {
 
-    var question = MutableLiveData<QuestionAnswer>()
+    var answers: List<QuestionAnswer> = emptyList()
+    var answer = MutableLiveData<QuestionAnswer>()
+    var position: Int = 0
 
-    fun getAnswerByQuestionId(id: Long) {
+    fun getAnswersByItem(item: BaseItem) {
         viewModelScope.launch {
-            getQuestionById.execute(id)
+            getListQuestionByItem.execute(item)
                 .let {
-                    question.value=it
+                    if (it.isNotEmpty()) {
+                        answers = it
+                        position = 0
+                        updateAnswer()
 
+                    }
                 }
         }
+    }
+
+    fun onPreviewAnswer() {
+        if (position == 0)
+            position = answers.size - 1
+        else if (position > 0)
+            position--
+        else
+            position = 0
+
+        updateAnswer()
+
+    }
+
+    fun onNextAnswer() {
+        if (position == answers.size - 1)
+            position = 0
+        else if (position >= 0)
+            position++
+        else
+            position = 0
+        updateAnswer()
+    }
+
+
+    private fun updateAnswer() {
+        if (position >= 0 && position < answers.size - 1)
+            answer.value = answers[position]
     }
 
 }

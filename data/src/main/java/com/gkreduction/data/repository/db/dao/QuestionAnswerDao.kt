@@ -27,6 +27,11 @@ interface QuestionAnswerDao {
     @Query("SELECT * FROM qa_data_subtopic_db WHERE dataId = :id")
     suspend fun getQuestionBySubTopicTopicId(id: Long): SubtopicWithQa
 
+
+    @Transaction
+    @Query("SELECT * FROM qa_data_roadmap_db WHERE dataId = :id")
+    suspend fun getQuestionByRoadmapId(id: Long): RoadmapWithQa
+
     @Transaction
     suspend fun insert(qaList: List<QuestionAnswerRemote>) {
         for (qa in qaList) {

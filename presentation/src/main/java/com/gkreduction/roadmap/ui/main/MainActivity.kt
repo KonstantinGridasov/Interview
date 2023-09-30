@@ -47,8 +47,8 @@ class MainActivity : DaggerAppCompatActivity() {
         binding.toolbar.setTextName(name)
     }
 
-    fun showDialogHelp(item: QuestionAnswer, listener: () -> Unit) {
-        val dialog = HelpDialog().setParams(item.answer, listener)
+    fun showDialogHelp(item: String, listener: () -> Unit) {
+        val dialog = HelpDialog().setParams(item, listener)
         dialog.show(supportFragmentManager, "")
     }
 

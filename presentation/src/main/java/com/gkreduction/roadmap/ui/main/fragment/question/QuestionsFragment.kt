@@ -1,6 +1,5 @@
 package com.gkreduction.roadmap.ui.main.fragment.question
 
-import androidx.navigation.findNavController
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentQuestionsBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
@@ -48,8 +47,8 @@ class QuestionsFragment : BaseFragment<QuestionsViewModel>(
     }
 
     override fun onTitleClick(id: Long) {
-        view?.findNavController()
-            ?.navigate(QuestionsFragmentDirections.questionToAnswer(id))
+//        view?.findNavController()
+//            ?.navigate(QuestionsFragmentDirections.questionToAnswer(id))
     }
 
 

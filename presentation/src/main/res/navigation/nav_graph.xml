@@ -11,8 +11,8 @@
         android:name="com.gkreduction.roadmap.ui.main.fragment.answer.AnswerFragment"
         tools:layout="@layout/fragment_answer">
         <argument
-            android:name="id"
-            app:argType="long" />
+            android:name="item"
+            app:argType="com.gkreduction.domain.entity.BaseItem" />
     </fragment>
 
     <fragment
@@ -32,6 +32,13 @@
                 app:argType="long" />
         </action>
 
+        <action
+            android:id="@+id/home_to_answers"
+            app:destination="@id/answerFragment">
+            <argument
+                android:name="item"
+                app:argType="com.gkreduction.domain.entity.BaseItem" />
+        </action>
     </fragment>
 
     <fragment
@@ -49,8 +56,8 @@
             app:argType="long" />
 
         <action
-            android:id="@+id/roadmap_to_questions"
-            app:destination="@id/questionFragment">
+            android:id="@+id/roadmap_to_answers"
+            app:destination="@id/answerFragment">
             <argument
                 android:name="item"
                 app:argType="com.gkreduction.domain.entity.BaseItem" />
@@ -72,8 +79,8 @@
             android:id="@+id/question_to_answer"
             app:destination="@id/answerFragment">
             <argument
-                android:name="id"
-                app:argType="long" />
+                android:name="item"
+                app:argType="com.gkreduction.domain.entity.BaseItem" />
         </action>
 
     </fragment>

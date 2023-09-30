@@ -1,10 +1,19 @@
 package com.gkreduction.data.mapper
 
-import com.gkreduction.data.repository.db.entity.question.QuestionAnswerDb
-import com.gkreduction.data.repository.db.entity.question.SectionWithQa
-import com.gkreduction.data.repository.db.entity.question.SubtopicWithQa
-import com.gkreduction.data.repository.db.entity.question.TopicWithQa
+import com.gkreduction.data.repository.db.entity.question.*
 import com.gkreduction.domain.entity.QuestionAnswer
+
+
+fun mapperQAWithRoadmapToModel(items: RoadmapWithQa?): List<QuestionAnswer> {
+    val result = ArrayList<QuestionAnswer>()
+    items?.qaList?.forEach {
+        result.add(transformQADbToModel(it))
+    }
+    result.sortBy { it.position }
+    return result
+}
+
+
 
 fun mapperQAWithSectionToModel(items: SectionWithQa?): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()

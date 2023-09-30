@@ -35,6 +35,7 @@ class DbRepositoryImpl(
 
     override suspend fun getQuestionByItem(item: BaseItem?): List<QuestionAnswer> {
         return when (item) {
+            is Roadmap -> mapperQAWithRoadmapToModel(qaDao.getQuestionByRoadmapId(item.id))
             is Section -> mapperQAWithSectionToModel(qaDao.getQuestionBySectionId(item.id))
             is Topic -> mapperQAWithTopicToModel(qaDao.getQuestionByTopicId(item.id))
             is Subtopic -> mapperQAWithSubTopicToModel(qaDao.getQuestionBySubTopicTopicId(item.id))

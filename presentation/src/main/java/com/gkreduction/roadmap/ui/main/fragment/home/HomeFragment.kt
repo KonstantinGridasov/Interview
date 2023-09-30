@@ -1,8 +1,8 @@
 package com.gkreduction.roadmap.ui.main.fragment.home
 
-import android.util.Log
 import android.view.View
 import androidx.navigation.findNavController
+import com.gkreduction.domain.entity.BaseItem
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentHomeBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
@@ -16,8 +16,8 @@ class HomeFragment :
 
     private var roadmapAdapter: RoadmapAdapter? = null
 
-    override fun onStart() {
-        super.onStart()
+    override fun initialize() {
+        super.initialize()
         (binding as FragmentHomeBinding).listener = this
         initAdapters()
         initObservers()
@@ -62,7 +62,9 @@ class HomeFragment :
         navigateToExam()
     }
 
-    private fun onTheoryClick(long: Long) {
+    private fun onTheoryClick(item: BaseItem) {
+        view?.findNavController()
+            ?.navigate(HomeFragmentDirections.homeToAnswers(item))
 
     }
 

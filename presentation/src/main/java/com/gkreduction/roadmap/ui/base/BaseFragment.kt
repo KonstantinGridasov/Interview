@@ -34,13 +34,8 @@ open class BaseFragment<T : BaseAndroidViewModel>(
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, viewId, container, false)
-
-        return binding.root
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         initialize()
+        return binding.root
     }
 
     open fun initialize() {

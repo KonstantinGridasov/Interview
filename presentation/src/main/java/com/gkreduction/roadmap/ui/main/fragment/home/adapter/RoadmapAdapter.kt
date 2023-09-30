@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.gkreduction.domain.entity.BaseItem
 import com.gkreduction.domain.entity.Roadmap
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ItemRoadmapBinding
 
 class RoadmapAdapter(
     var onRoadmapClick: (id: Long) -> Unit,
-    var onTheoryClick: (id: Long) -> Unit,
+    var onTheoryClick: (item: BaseItem) -> Unit,
     var onQuestionClick: (id: Long) -> Unit
 ) : RecyclerView.Adapter<RoadmapAdapter.ViewHolder>() {
 
@@ -35,7 +36,7 @@ class RoadmapAdapter(
         holder.binding.titleRoadmap.text = items[position].name
 
         holder.binding.subItemRoadmap.setOnClickListener { onRoadmapClick.invoke(items[position].id) }
-        holder.binding.subItemTheory.setOnClickListener { onTheoryClick.invoke(items[position].id) }
+        holder.binding.subItemTheory.setOnClickListener { onTheoryClick.invoke(items[position]) }
         holder.binding.subItemQuestion.setOnClickListener { onQuestionClick.invoke(items[position].id) }
     }
 

@@ -20,7 +20,7 @@ class ExamViewModel(
     private var sizeQuestion = MutableLiveData<Int>()
     private var activePosition: Int = -1
 
-    var answer = MutableLiveData<QuestionAnswer>()
+    var answer = MutableLiveData<String>()
 
     var question = MutableLiveData<String>()
     var onRight = MutableLiveData<Int>()
@@ -30,12 +30,10 @@ class ExamViewModel(
 
     fun getQuestions() {
         if (qa.isEmpty()) {
-            activePosition = -1
-            val items = (5..10).random()
+            val items = (10..20).random()
             viewModelScope.launch {
                 getRandomQuestion.execute(items)
                     .let {
-
                         qa.addAll(it)
                         sizeQuestion.value = it.size
                         updateQuestion()
@@ -51,7 +49,7 @@ class ExamViewModel(
         viewModelScope.launch {
             getQuestionById.execute(id)
                 .let {
-                    answer.value = it
+                    answer.value = it.answer
                 }
         }
     }
@@ -59,8 +57,8 @@ class ExamViewModel(
     fun clearQuestion() {
         resetToDefault()
         qa.clear()
-        question = MutableLiveData<String>()
-        statusFinish = MutableLiveData<Boolean>()
+//        question = MutableLiveData<String>()
+//        statusFinish = MutableLiveData<Boolean>()
         getQuestions()
     }
 
@@ -80,6 +78,7 @@ class ExamViewModel(
     }
 
     private fun updateStatus() {
+        activePosition = -1
         val size = sizeQuestion.value ?: 1
         val right = onRight.value ?: 1
         val percent: Float = (right.toFloat() / size.toFloat())
@@ -113,7 +112,7 @@ class ExamViewModel(
     }
 
     fun clearAnswer() {
-        answer = MutableLiveData<QuestionAnswer>()
+        answer.value = ""
     }
 
 

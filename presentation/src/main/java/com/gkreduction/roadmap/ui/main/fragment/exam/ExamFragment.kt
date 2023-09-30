@@ -1,7 +1,6 @@
 package com.gkreduction.roadmap.ui.main.fragment.exam
 
 import android.view.View
-import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentExamBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
@@ -13,9 +12,8 @@ class ExamFragment :
         ExamViewModel::class.java
     ), View.OnClickListener {
 
-
-    override fun onStart() {
-        super.onStart()
+    override fun initialize() {
+        super.initialize()
         (binding as FragmentExamBinding).viewModel = viewModel
         (binding as FragmentExamBinding).listener = this
         viewModel?.getQuestions()
@@ -39,7 +37,8 @@ class ExamFragment :
             }
 
             viewModel?.answer?.observe(it) { item ->
-                showDialog(item)
+                if (item.isNotEmpty())
+                    showDialog(item)
             }
             viewModel?.statusFinish?.observe(it) { item ->
                 showDialogFinish(item)
@@ -65,8 +64,8 @@ class ExamFragment :
         }
     }
 
-    private fun showDialog(item: QuestionAnswer) {
-        (activity as? MainActivity)?.showDialogHelp(item) {viewModel?.clearAnswer()}
+    private fun showDialog(item: String) {
+        (activity as? MainActivity)?.showDialogHelp(item) { viewModel?.clearAnswer() }
 
     }
 

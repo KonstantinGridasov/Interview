@@ -28,7 +28,7 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class MainModule {
-    
+
     @ContributesAndroidInjector
     internal abstract fun contributeAnswerFragment(): AnswerFragment
 
@@ -120,7 +120,7 @@ abstract class MainModule {
 
                         modelClass.isAssignableFrom(AnswerViewModel::class.java) ->
                             AnswerViewModel(
-                                app, getQuestionById
+                                app, getListQuestionByItem
                             ) as T
 
                         modelClass.isAssignableFrom(RoadmapViewModel::class.java) ->

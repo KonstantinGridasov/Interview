@@ -59,6 +59,18 @@ data class QAWithSubTopicCrossRef(
 )
 
 
+data class RoadmapWithQa(
+    @Embedded val roadmap: QADataRoadmapDb,
+    @Relation(
+        parentColumn = "dataId",
+        entityColumn = "qaId",
+        associateBy = Junction(QAWithRoadmapCrossRef::class)
+
+    )
+    val qaList: List<QuestionAnswerDb>
+)
+
+
 data class QAWithRoadmap(
     @Embedded val qa: QuestionAnswerDb,
     @Relation(

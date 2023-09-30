@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
         <import type="android.text.Html" />
 
     </data>
@@ -74,6 +78,7 @@
             android:layout_marginBottom="@dimen/_10gkdp"
             android:adjustViewBounds="true"
             android:background="@drawable/background_rounded_item"
+            android:onClick="@{listener}"
             android:scaleType="centerInside"
             android:src="@drawable/ic_preview"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,6 +94,7 @@
             android:layout_marginBottom="@dimen/_10gkdp"
             android:adjustViewBounds="true"
             android:background="@drawable/background_rounded_item"
+            android:onClick="@{listener}"
             android:scaleType="centerInside"
             android:src="@drawable/ic_next"
             app:layout_constraintBottom_toBottomOf="parent"
