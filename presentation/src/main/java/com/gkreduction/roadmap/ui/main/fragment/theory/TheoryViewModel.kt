@@ -55,7 +55,7 @@ class TheoryViewModel(context: Context, var getListQuestionByItem: GetListQuesti
 
 
     private fun updateAnswer() {
-        if (position >= 0 && position < answers.size - 1)
+        if (position >= 0 && position <= answers.size - 1)
             answer.value = answers[position]
     }
 

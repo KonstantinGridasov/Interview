@@ -45,7 +45,7 @@ class RoadmapFragment : BaseFragment<RoadmapViewModel>(
     }
 
     override fun onSectionClick(item: BaseItem) {
-        navigateToList(item)
+        navigateToTheory(item)
     }
 
     override fun onSectionLongClick(item: BaseItem) {
@@ -53,7 +53,7 @@ class RoadmapFragment : BaseFragment<RoadmapViewModel>(
     }
 
     override fun onSubtopicClick(item: BaseItem) {
-        navigateToList(item)
+        navigateToTheory(item)
     }
 
     override fun onSubtopicLongClick(item: BaseItem) {
@@ -61,7 +61,7 @@ class RoadmapFragment : BaseFragment<RoadmapViewModel>(
     }
 
     override fun onTopicClick(item: BaseItem) {
-        navigateToList(item)
+        navigateToTheory(item)
     }
 
     override fun onTopicLongClick(item: BaseItem) {
