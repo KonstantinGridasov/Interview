@@ -21,7 +21,6 @@
             android:layout_marginStart="@dimen/_4gkdp"
             android:padding="@dimen/_3gkdp"
             android:ellipsize="marquee"
-            android:fontFamily="@font/comfortaa_regular"
             android:gravity="start|center_vertical"
             android:text="@string/category"
             android:textColor="@color/white"

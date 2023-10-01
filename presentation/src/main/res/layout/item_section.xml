@@ -28,13 +28,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|top"
-                android:fontFamily="@font/comfortaa_regular"
                 android:layout_marginStart="@dimen/_2gkdp"
                 android:layout_marginTop="@dimen/_2gkdp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/color_name_section"
-                android:textSize="@dimen/_8gkdp" />
+                android:textSize="@dimen/_10gkdp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_topics"

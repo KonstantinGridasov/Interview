@@ -35,7 +35,7 @@ class CustomToolbar @JvmOverloads constructor(
     }
 
 
-    fun setOnImageClickListener(function: () -> Unit) {
+    fun setListenerToolbar(function: () -> Unit) {
         this.onItemClickListener = function
     }
 

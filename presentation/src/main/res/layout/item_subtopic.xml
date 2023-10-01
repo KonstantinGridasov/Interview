@@ -14,5 +14,5 @@
         android:ellipsize="marquee"
         android:maxLines="1"
         android:textColor="@color/white"
-        android:textSize="@dimen/_8gkdp" />
+        android:textSize="@dimen/_9gkdp" />
 </layout>

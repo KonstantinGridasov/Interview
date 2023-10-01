@@ -34,7 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5gkdp"
-                android:fontFamily="@font/comfortaa_regular"
                 android:paddingStart="@dimen/_5gkdp"
                 android:paddingEnd="@dimen/_5gkdp"
                 android:textColor="@color/white"

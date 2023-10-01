@@ -42,10 +42,15 @@ class MainActivity : DaggerAppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.toolbar.setVisibilityToolbar(destinationId = destination.id)
         }
+        setToolbarNavigation()
     }
 
     fun setToolbarName(name: String) {
         binding.toolbar.setTextName(name)
+    }
+
+    fun setToolbarNavigation() {
+        binding.toolbar.setListenerToolbar { navController.navigateUp() }
     }
 
     fun showDialogHelp(item: String, listener: () -> Unit) {
