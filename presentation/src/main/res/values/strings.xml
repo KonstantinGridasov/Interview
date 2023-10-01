@@ -5,7 +5,9 @@
     <string name="update_question">Обновление вопросов</string>
     <string name="roadmap">Roadmap</string>
     <string name="theory">Теория</string>
+    <string name="list_tittle">Список тем</string>
     <string name="question">Вопросы</string>
+    <string name="exam">Экзамен</string>
     <string name="topic"><font color='#F1720E'>topic </font></string>
     <!--    <string name="action_settings">Settings</string>-->
     <!--    <string name="category_fragment">Category Fragment</string>-->

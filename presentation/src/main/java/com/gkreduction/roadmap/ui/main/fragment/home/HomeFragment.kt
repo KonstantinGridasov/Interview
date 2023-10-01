@@ -64,7 +64,7 @@ class HomeFragment :
 
     private fun onTheoryClick(item: BaseItem) {
         view?.findNavController()
-            ?.navigate(HomeFragmentDirections.homeToAnswers(item))
+            ?.navigate(HomeFragmentDirections.homeToTheory(item))
 
     }
 

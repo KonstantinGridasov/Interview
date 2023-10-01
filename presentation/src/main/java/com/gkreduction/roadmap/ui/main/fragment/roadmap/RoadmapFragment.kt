@@ -48,18 +48,52 @@ class RoadmapFragment : BaseFragment<RoadmapViewModel>(
         navigateToList(item)
     }
 
+    override fun onSectionLongClick(item: BaseItem) {
+        showBottomDialog(item)
+    }
+
     override fun onSubtopicClick(item: BaseItem) {
         navigateToList(item)
+    }
+
+    override fun onSubtopicLongClick(item: BaseItem) {
+        showBottomDialog(item)
     }
 
     override fun onTopicClick(item: BaseItem) {
         navigateToList(item)
     }
 
+    override fun onTopicLongClick(item: BaseItem) {
+        showBottomDialog(item)
+    }
+
+
+    private fun showBottomDialog(item: BaseItem) {
+        activity?.let {
+            if (it is MainActivity)
+                it.showDialogBottom(
+                    item,
+                    { navigateToList(item) },
+                    { navigateToTheory(item) },
+                    { navigateToExam(item) }
+                )
+        }
+    }
+
     private fun navigateToList(item: BaseItem) {
         view?.findNavController()
-            ?.navigate(RoadmapFragmentDirections.roadmapToAnswers(item))
+            ?.navigate(RoadmapFragmentDirections.roadmapToList(item))
 
     }
 
+    private fun navigateToExam(item: BaseItem) {
+
+    }
+
+    private fun navigateToTheory(item: BaseItem) {
+        view?.findNavController()
+            ?.navigate(RoadmapFragmentDirections.roadmapToTheory(item))
+
+    }
 }

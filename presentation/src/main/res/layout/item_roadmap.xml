@@ -42,7 +42,7 @@
             android:layout_marginStart="@dimen/_15gkdp"
             android:layout_marginTop="@dimen/_10gkdp"
             android:layout_marginEnd="@dimen/_10gkdp"
-            app:icon_sub_item="@drawable/ic_theory"
+            app:icon_sub_item="@drawable/ic_list_theory"
             app:text_sub_item="@string/theory" />
 
         <com.gkreduction.roadmap.ui.widjet.CustomSubItem

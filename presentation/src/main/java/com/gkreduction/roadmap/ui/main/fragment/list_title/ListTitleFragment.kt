@@ -1,22 +1,22 @@
-package com.gkreduction.roadmap.ui.main.fragment.question
+package com.gkreduction.roadmap.ui.main.fragment.list_title
 
 import com.gkreduction.roadmap.R
-import com.gkreduction.roadmap.databinding.FragmentQuestionsBinding
+import com.gkreduction.roadmap.databinding.FragmentListTitleBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
 import com.gkreduction.roadmap.ui.main.MainActivity
-import com.gkreduction.roadmap.ui.main.fragment.question.adapter.OnTitleItemListener
-import com.gkreduction.roadmap.ui.main.fragment.question.adapter.QuestionAdapter
+import com.gkreduction.roadmap.ui.main.fragment.list_title.adapter.ListTitleAdapter
+import com.gkreduction.roadmap.ui.main.fragment.list_title.adapter.OnTitleItemListener
 
 
-class QuestionsFragment : BaseFragment<QuestionsViewModel>(
-    R.layout.fragment_questions,
-    QuestionsViewModel::class.java
+class ListTitleFragment : BaseFragment<ListTitleViewModel>(
+    R.layout.fragment_list_title,
+    ListTitleViewModel::class.java
 ), OnTitleItemListener {
-    lateinit var adapter: QuestionAdapter
+    lateinit var adapter: ListTitleAdapter
     override fun onStart() {
         super.onStart()
 
-        val item = QuestionsFragmentArgs.fromBundle(requireArguments()).item
+        val item = ListTitleFragmentArgs.fromBundle(requireArguments()).item
         viewModel?.getQuestionsById(item)
         setToolbarName(item.name)
         initAdapters()
@@ -32,8 +32,8 @@ class QuestionsFragment : BaseFragment<QuestionsViewModel>(
 
 
     private fun initAdapters() {
-        adapter = QuestionAdapter(this)
-        (binding as FragmentQuestionsBinding).rvListItem.adapter = adapter
+        adapter = ListTitleAdapter(this)
+        (binding as FragmentListTitleBinding).rvListItem.adapter = adapter
     }
 
 

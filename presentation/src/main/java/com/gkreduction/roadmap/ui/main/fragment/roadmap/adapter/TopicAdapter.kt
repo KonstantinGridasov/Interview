@@ -33,6 +33,10 @@ class TopicAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleTopic.text = getTopicText(position)
         holder.binding.titleTopic.setOnClickListener { onTopicListener?.onTopicClick(items[position]) }
+        holder.binding.titleTopic.setOnLongClickListener {
+            onTopicListener?.onTopicLongClick(items[position])
+            true
+        }
         holder.binding.rvSubtopics.adapter =
             SubTopicAdapter(items[position].subtopics, onSubtopicListener)
     }

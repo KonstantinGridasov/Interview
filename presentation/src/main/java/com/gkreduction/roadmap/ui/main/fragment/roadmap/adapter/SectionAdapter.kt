@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.text.Html
 import android.text.Spanned
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,10 @@ class SectionAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleSection.text = getTopicText(position)
         holder.binding.titleSection.setOnClickListener { onSectionListener?.onSectionClick(items[position]) }
+        holder.binding.titleSection.setOnLongClickListener {
+            onSectionListener?.onSectionLongClick(items[position])
+            true
+        }
         holder.binding.rvTopics.adapter =
             TopicAdapter(items[position].topics, onTopicListener, onSubtopicListener)
 

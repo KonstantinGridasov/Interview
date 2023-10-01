@@ -7,15 +7,6 @@
 
 
     <fragment
-        android:id="@+id/answerFragment"
-        android:name="com.gkreduction.roadmap.ui.main.fragment.answer.AnswerFragment"
-        tools:layout="@layout/fragment_answer">
-        <argument
-            android:name="item"
-            app:argType="com.gkreduction.domain.entity.BaseItem" />
-    </fragment>
-
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.gkreduction.roadmap.ui.main.fragment.home.HomeFragment"
         tools:layout="@layout/fragment_home">
@@ -33,12 +24,22 @@
         </action>
 
         <action
-            android:id="@+id/home_to_answers"
-            app:destination="@id/answerFragment">
+            android:id="@+id/home_to_theory"
+            app:destination="@id/theoryFragment">
             <argument
                 android:name="item"
                 app:argType="com.gkreduction.domain.entity.BaseItem" />
         </action>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/theoryFragment"
+        android:name="com.gkreduction.roadmap.ui.main.fragment.theory.TheoryFragment"
+        tools:layout="@layout/fragment_theory">
+        <argument
+            android:name="item"
+            app:argType="com.gkreduction.domain.entity.BaseItem" />
     </fragment>
 
     <fragment
@@ -56,8 +57,17 @@
             app:argType="long" />
 
         <action
-            android:id="@+id/roadmap_to_answers"
-            app:destination="@id/answerFragment">
+            android:id="@+id/roadmap_to_theory"
+            app:destination="@id/theoryFragment">
+            <argument
+                android:name="item"
+                app:argType="com.gkreduction.domain.entity.BaseItem" />
+
+        </action>
+
+        <action
+            android:id="@+id/roadmap_to_list"
+            app:destination="@id/listTitleFragment">
             <argument
                 android:name="item"
                 app:argType="com.gkreduction.domain.entity.BaseItem" />
@@ -67,17 +77,17 @@
     </fragment>
 
     <fragment
-        android:id="@+id/questionFragment"
-        android:name="com.gkreduction.roadmap.ui.main.fragment.question.QuestionsFragment"
-        tools:layout="@layout/fragment_questions">
+        android:id="@+id/listTitleFragment"
+        android:name="com.gkreduction.roadmap.ui.main.fragment.list_title.ListTitleFragment"
+        tools:layout="@layout/fragment_list_title">
 
         <argument
             android:name="item"
             app:argType="com.gkreduction.domain.entity.BaseItem" />
 
         <action
-            android:id="@+id/question_to_answer"
-            app:destination="@id/answerFragment">
+            android:id="@+id/list_to_theory"
+            app:destination="@id/theoryFragment">
             <argument
                 android:name="item"
                 app:argType="com.gkreduction.domain.entity.BaseItem" />

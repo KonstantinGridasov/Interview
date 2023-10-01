@@ -1,4 +1,4 @@
-package com.gkreduction.roadmap.ui.main.fragment.question
+package com.gkreduction.roadmap.ui.main.fragment.list_title
 
 import android.app.Application
 import android.content.Context
@@ -10,7 +10,7 @@ import com.gkreduction.domain.usecase.GetListQuestionsByItem
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
 import kotlinx.coroutines.launch
 
-class QuestionsViewModel(
+class ListTitleViewModel(
     context: Context,
     var getListQuestionByItem: GetListQuestionsByItem
 ) :

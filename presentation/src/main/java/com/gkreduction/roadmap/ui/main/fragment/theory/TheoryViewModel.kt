@@ -1,4 +1,4 @@
-package com.gkreduction.roadmap.ui.main.fragment.answer
+package com.gkreduction.roadmap.ui.main.fragment.theory
 
 import android.app.Application
 import android.content.Context
@@ -10,7 +10,7 @@ import com.gkreduction.domain.usecase.GetListQuestionsByItem
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
 import kotlinx.coroutines.launch
 
-class AnswerViewModel(context: Context, var getListQuestionByItem: GetListQuestionsByItem) :
+class TheoryViewModel(context: Context, var getListQuestionByItem: GetListQuestionsByItem) :
     BaseAndroidViewModel(context.applicationContext as Application) {
 
     var answers: List<QuestionAnswer> = emptyList()

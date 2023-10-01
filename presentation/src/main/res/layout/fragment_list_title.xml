@@ -32,7 +32,7 @@
                 android:layout_marginStart="@dimen/_10gkdp"
                 android:layout_marginEnd="@dimen/_10gkdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_question" />
+                tools:listitem="@layout/item_list_title" />
 
         </FrameLayout>
 

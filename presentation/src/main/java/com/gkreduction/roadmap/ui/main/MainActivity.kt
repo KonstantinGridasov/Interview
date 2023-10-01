@@ -5,9 +5,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.gkreduction.domain.entity.QuestionAnswer
+import com.gkreduction.domain.entity.BaseItem
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ActivityMainBinding
+import com.gkreduction.roadmap.ui.dialog.bottomSheet.BottomSheet
 import com.gkreduction.roadmap.ui.dialog.finish.FinishDialog
 import com.gkreduction.roadmap.ui.dialog.help.HelpDialog
 import com.gkreduction.roadmap.utils.lazyThreadSafetyNone
@@ -54,6 +55,19 @@ class MainActivity : DaggerAppCompatActivity() {
 
     fun showDialogFinish(status: Boolean, listener: () -> Unit) {
         val dialog = FinishDialog().setParams(status, listener)
+        dialog.show(supportFragmentManager, "")
+    }
+
+    fun showDialogBottom(
+        item: BaseItem, onChooseList: () -> Unit,
+        onChooseTheory: () -> Unit,
+        onChooseExam: () -> Unit
+    ) {
+        val dialog = BottomSheet().setParams(
+            item, onChooseList,
+            onChooseTheory,
+            onChooseExam
+        )
         dialog.show(supportFragmentManager, "")
     }
 

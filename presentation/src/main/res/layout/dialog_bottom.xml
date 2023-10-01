@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_sheet_background"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_20gkdp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30gkdp"
+                android:layout_marginTop="@dimen/_5gkdp"
+                android:fontFamily="@font/comfortaa_regular"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12gkdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_30gkdp"
+                android:layout_marginEnd="@dimen/_30gkdp"
+                android:background="@color/white" />
+
+            <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+                android:id="@+id/cv_list"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30gkdp"
+                android:layout_marginStart="@dimen/_10gkdp"
+                android:layout_marginTop="@dimen/_10gkdp"
+                android:layout_marginEnd="@dimen/_10gkdp"
+                app:icon_sub_item="@drawable/ic_list_theory"
+                app:text_sub_item="@string/list_tittle" />
+
+            <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+                android:id="@+id/cv_theory"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30gkdp"
+                android:layout_marginStart="@dimen/_10gkdp"
+                android:layout_marginTop="@dimen/_10gkdp"
+                android:layout_marginEnd="@dimen/_10gkdp"
+                app:icon_sub_item="@drawable/ic_theory"
+                app:text_sub_item="@string/theory" />
+
+            <com.gkreduction.roadmap.ui.widjet.CustomSubItem
+                android:id="@+id/cv_exam"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30gkdp"
+                android:layout_marginStart="@dimen/_10gkdp"
+                android:layout_marginTop="@dimen/_10gkdp"
+                android:layout_marginEnd="@dimen/_10gkdp"
+                app:icon_sub_item="@drawable/ic_question"
+                app:text_sub_item="@string/exam" />
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

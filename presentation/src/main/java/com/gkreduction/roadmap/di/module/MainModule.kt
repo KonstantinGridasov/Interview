@@ -12,14 +12,14 @@ import com.gkreduction.roadmap.ui.dialog.finish.FinishViewModel
 import com.gkreduction.roadmap.ui.dialog.help.HelpDialog
 import com.gkreduction.roadmap.ui.dialog.help.HelpDialogViewModel
 import com.gkreduction.roadmap.ui.main.MainViewModel
-import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerFragment
-import com.gkreduction.roadmap.ui.main.fragment.answer.AnswerViewModel
+import com.gkreduction.roadmap.ui.main.fragment.theory.TheoryFragment
+import com.gkreduction.roadmap.ui.main.fragment.theory.TheoryViewModel
 import com.gkreduction.roadmap.ui.main.fragment.exam.ExamFragment
 import com.gkreduction.roadmap.ui.main.fragment.exam.ExamViewModel
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeFragment
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeViewModel
-import com.gkreduction.roadmap.ui.main.fragment.question.QuestionsFragment
-import com.gkreduction.roadmap.ui.main.fragment.question.QuestionsViewModel
+import com.gkreduction.roadmap.ui.main.fragment.list_title.ListTitleFragment
+import com.gkreduction.roadmap.ui.main.fragment.list_title.ListTitleViewModel
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapFragment
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapViewModel
 import dagger.Module
@@ -30,7 +30,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class MainModule {
 
     @ContributesAndroidInjector
-    internal abstract fun contributeAnswerFragment(): AnswerFragment
+    internal abstract fun contributeAnswerFragment(): TheoryFragment
 
     @ContributesAndroidInjector
     internal abstract fun contributeHomeFragment(): HomeFragment
@@ -42,7 +42,7 @@ abstract class MainModule {
     internal abstract fun contributeRoadmapFragment(): RoadmapFragment
 
     @ContributesAndroidInjector
-    internal abstract fun contributeQuestionsFragment(): QuestionsFragment
+    internal abstract fun contributeQuestionsFragment(): ListTitleFragment
 
     @ContributesAndroidInjector
     abstract fun contributeHelpDialog(): HelpDialog
@@ -118,8 +118,8 @@ abstract class MainModule {
                                 app
                             ) as T
 
-                        modelClass.isAssignableFrom(AnswerViewModel::class.java) ->
-                            AnswerViewModel(
+                        modelClass.isAssignableFrom(TheoryViewModel::class.java) ->
+                            TheoryViewModel(
                                 app, getListQuestionByItem
                             ) as T
 
@@ -128,8 +128,8 @@ abstract class MainModule {
                                 app, getRoadmapByIdUseCase
                             ) as T
 
-                        modelClass.isAssignableFrom(QuestionsViewModel::class.java) ->
-                            QuestionsViewModel(
+                        modelClass.isAssignableFrom(ListTitleViewModel::class.java) ->
+                            ListTitleViewModel(
                                 app, getListQuestionByItem
                             ) as T
 

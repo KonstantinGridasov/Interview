@@ -1,4 +1,4 @@
-package com.gkreduction.roadmap.ui.main.fragment.question.adapter
+package com.gkreduction.roadmap.ui.main.fragment.list_title.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,21 +7,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.roadmap.R
-import com.gkreduction.roadmap.databinding.ItemQuestionBinding
+import com.gkreduction.roadmap.databinding.ItemListTitleBinding
 
-class QuestionAdapter(
+class ListTitleAdapter(
     var onTitleItemListener: OnTitleItemListener?
-) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ListTitleAdapter.ViewHolder>() {
     private var items: List<QuestionAnswer> = emptyList()
 
-    inner class ViewHolder(val binding: ItemQuestionBinding) :
+    inner class ViewHolder(val binding: ItemListTitleBinding) :
         RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding: ItemQuestionBinding =
-            DataBindingUtil.inflate(inflater, R.layout.item_question, parent, false)
+        val binding: ItemListTitleBinding =
+            DataBindingUtil.inflate(inflater, R.layout.item_list_title, parent, false)
         return ViewHolder(binding)
     }
 

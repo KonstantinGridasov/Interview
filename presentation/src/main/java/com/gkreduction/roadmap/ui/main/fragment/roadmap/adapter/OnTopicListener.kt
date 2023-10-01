@@ -4,4 +4,5 @@ import com.gkreduction.domain.entity.BaseItem
 
 interface OnTopicListener {
     fun onTopicClick(item: BaseItem)
+    fun onTopicLongClick(item: BaseItem)
 }

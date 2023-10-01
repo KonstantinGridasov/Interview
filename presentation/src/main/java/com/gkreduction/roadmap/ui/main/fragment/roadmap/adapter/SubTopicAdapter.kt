@@ -33,6 +33,10 @@ class SubTopicAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleSubtopic.text = getSubTopicText(position)
         holder.binding.titleSubtopic.setOnClickListener { onSubtopicListener?.onSubtopicClick(items[position]) }
+        holder.binding.titleSubtopic.setOnLongClickListener {
+            onSubtopicListener?.onSubtopicLongClick(items[position])
+            true
+        }
     }
 
 

@@ -6,11 +6,16 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:navigationBarColor">@color/color_foreground</item>
 
+        <item name="colorSurface">@android:color/transparent</item>
         <item name="colorPrimary">@color/color_foreground</item>
         <item name="colorOnPrimary">@color/color_white</item>
         <item name="colorSecondary">@color/color_second_background</item>
-<!--        <item name="colorOnSecondary">@color/colorTextNotActiveDay</item>-->
+        <!--        <item name="colorOnSecondary">@color/colorTextNotActiveDay</item>-->
     </style>
+
+
+
+
 
     <style name="StyleToolBarText">
         <item name="android:textSize">@dimen/_11gkdp</item>
