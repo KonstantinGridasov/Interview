@@ -17,17 +17,27 @@ class TheoryViewModel(context: Context, var getListQuestionByItem: GetListQuesti
     var answer = MutableLiveData<QuestionAnswer>()
     var position: Int = 0
 
-    fun getAnswersByItem(item: BaseItem) {
+    fun getTheoryByItem(item: BaseItem, id: Long) {
         viewModelScope.launch {
             getListQuestionByItem.execute(item)
                 .let {
                     if (it.isNotEmpty()) {
                         answers = it
-                        position = 0
+                        if (id > 0) {
+                            setPosition(id)
+                        } else
+                            position = 0
                         updateAnswer()
 
                     }
                 }
+        }
+    }
+
+    private fun setPosition(id: Long) {
+        for (i in answers.indices) {
+            if (answers[i].id == id)
+                position = i
         }
     }
 

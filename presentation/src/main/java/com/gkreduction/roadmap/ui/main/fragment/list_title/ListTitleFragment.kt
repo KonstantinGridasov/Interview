@@ -1,5 +1,7 @@
 package com.gkreduction.roadmap.ui.main.fragment.list_title
 
+import androidx.navigation.findNavController
+import com.gkreduction.domain.entity.BaseItem
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentListTitleBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
@@ -13,10 +15,10 @@ class ListTitleFragment : BaseFragment<ListTitleViewModel>(
     ListTitleViewModel::class.java
 ), OnTitleItemListener {
     lateinit var adapter: ListTitleAdapter
+    private lateinit var item: BaseItem
     override fun onStart() {
         super.onStart()
-
-        val item = ListTitleFragmentArgs.fromBundle(requireArguments()).item
+        item = ListTitleFragmentArgs.fromBundle(requireArguments()).item
         viewModel?.getQuestionsById(item)
         setToolbarName(item.name)
         initAdapters()
@@ -47,8 +49,8 @@ class ListTitleFragment : BaseFragment<ListTitleViewModel>(
     }
 
     override fun onTitleClick(id: Long) {
-//        view?.findNavController()
-//            ?.navigate(QuestionsFragmentDirections.questionToAnswer(id))
+        view?.findNavController()
+            ?.navigate(ListTitleFragmentDirections.listToTheory(item,id))
     }
 
 

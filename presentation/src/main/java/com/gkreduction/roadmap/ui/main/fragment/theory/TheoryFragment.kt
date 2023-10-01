@@ -16,7 +16,8 @@ class TheoryFragment : BaseFragment<TheoryViewModel>(
     override fun onStart() {
         super.onStart()
         val item = TheoryFragmentArgs.fromBundle(requireArguments()).item
-        viewModel?.getAnswersByItem(item)
+        val id = TheoryFragmentArgs.fromBundle(requireArguments()).id
+        viewModel?.getTheoryByItem(item, id)
         initListeners()
     }
 

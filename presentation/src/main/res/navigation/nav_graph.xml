@@ -38,6 +38,10 @@
         android:name="com.gkreduction.roadmap.ui.main.fragment.theory.TheoryFragment"
         tools:layout="@layout/fragment_theory">
         <argument
+            android:name="id"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <argument
             android:name="item"
             app:argType="com.gkreduction.domain.entity.BaseItem" />
     </fragment>
@@ -91,6 +95,10 @@
             <argument
                 android:name="item"
                 app:argType="com.gkreduction.domain.entity.BaseItem" />
+            <argument
+                android:name="id"
+                app:argType="long" />
+
         </action>
 
     </fragment>
