@@ -12,6 +12,8 @@ class ExamFragment :
         ExamViewModel::class.java
     ), View.OnClickListener {
 
+    private var inProcess = false
+
     override fun initialize() {
         super.initialize()
         (binding as FragmentExamBinding).viewModel = viewModel
@@ -19,6 +21,17 @@ class ExamFragment :
         val item = ExamFragmentArgs.fromBundle(requireArguments()).item
         viewModel?.updateItem(item)
         initObservers()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        inProcess = true
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        inProcess = false
     }
 
     private fun initObservers() {
@@ -42,7 +55,8 @@ class ExamFragment :
                     showDialog(item)
             }
             viewModel?.statusFinish?.observe(it) { item ->
-                showDialogFinish(item)
+                if (inProcess)
+                    showDialogFinish(item)
             }
         }
 

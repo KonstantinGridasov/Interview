@@ -43,7 +43,7 @@ class ExamViewModel(
                 getListQuestionByItem.execute(params)
                     .let {
                         qa.addAll(it)
-                        sizeQuestion.value = it.size
+                        sizeQuestion.value = it.size - 1
                         updateQuestion()
                         resetToDefault()
                     }

@@ -30,6 +30,9 @@ class TheoryViewModel(context: Context, var getListQuestionByItem: GetListQuesti
                             position = 0
                         updateAnswer()
 
+                    } else {
+                        answer.value = QuestionAnswer(-1L, item.name, "TODO", 0)
+                        answers = emptyList()
                     }
                 }
         }
