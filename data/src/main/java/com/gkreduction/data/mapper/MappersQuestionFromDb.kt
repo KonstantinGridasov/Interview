@@ -1,45 +1,59 @@
 package com.gkreduction.data.mapper
 
 import com.gkreduction.data.repository.db.entity.question.*
+import com.gkreduction.data.utils.randomWithSize
 import com.gkreduction.domain.entity.QuestionAnswer
 
 
-fun mapperQAWithRoadmapToModel(items: RoadmapWithQa?): List<QuestionAnswer> {
+fun mapperQAWithRoadmapToModel(
+    items: RoadmapWithQa?,
+    random: Boolean,
+    size: Int
+): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()
     items?.qaList?.forEach {
         result.add(transformQADbToModel(it))
     }
-    result.sortBy { it.position }
-    return result
+    return randomWithSize(result, random, size)
 }
 
 
-
-fun mapperQAWithSectionToModel(items: SectionWithQa?): List<QuestionAnswer> {
+fun mapperQAWithSectionToModel(
+    items: SectionWithQa?,
+    random: Boolean,
+    size: Int
+): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()
     items?.qaRoadmaps?.forEach {
         result.add(transformQADbToModel(it))
     }
-    result.sortBy { it.position }
-    return result
+    return randomWithSize(result, random, size)
 }
 
-fun mapperQAWithTopicToModel(items: TopicWithQa?): List<QuestionAnswer> {
+fun mapperQAWithTopicToModel(
+    items: TopicWithQa?,
+    random: Boolean,
+    size: Int
+): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()
     items?.qaRoadmaps?.forEach {
         result.add(transformQADbToModel(it))
     }
-    result.sortBy { it.position }
-    return result
+    return randomWithSize(result, random, size)
+
 }
 
-fun mapperQAWithSubTopicToModel(items: SubtopicWithQa?): List<QuestionAnswer> {
+fun mapperQAWithSubTopicToModel(
+    items: SubtopicWithQa?,
+    random: Boolean,
+    size: Int
+): List<QuestionAnswer> {
     val result = ArrayList<QuestionAnswer>()
     items?.qaRoadmaps?.forEach {
         result.add(transformQADbToModel(it))
     }
-    result.sortBy { it.position }
-    return result
+    return randomWithSize(result, random, size)
+
 }
 
 fun transformQAListDbToModel(list: List<QuestionAnswerDb>?): List<QuestionAnswer> {

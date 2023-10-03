@@ -20,7 +20,8 @@ class ListTitleViewModel(
 
     fun getQuestionsById(item: BaseItem) {
         viewModelScope.launch {
-            getListQuestionByItem.execute(item)
+            val params = GetListQuestionsByItem.Params(item)
+            getListQuestionByItem.execute(params)
                 .let {
                     roadmap.value = it
 

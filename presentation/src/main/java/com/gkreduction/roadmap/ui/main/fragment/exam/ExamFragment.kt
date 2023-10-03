@@ -16,7 +16,8 @@ class ExamFragment :
         super.initialize()
         (binding as FragmentExamBinding).viewModel = viewModel
         (binding as FragmentExamBinding).listener = this
-        viewModel?.getQuestions()
+        val item = ExamFragmentArgs.fromBundle(requireArguments()).item
+        viewModel?.updateItem(item)
         initObservers()
     }
 

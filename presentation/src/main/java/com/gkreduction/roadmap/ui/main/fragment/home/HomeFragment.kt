@@ -53,31 +53,33 @@ class HomeFragment :
     }
     //region Navigate
 
-    private fun onRoadmapClick(long: Long) {
-        view?.findNavController()
-            ?.navigate(HomeFragmentDirections.homeToRoadmap(long))
+    private fun onRoadmapClick(item: BaseItem) {
+        navigateToRoadmap(item.id)
     }
 
-    private fun onQuestionClick(long: Long) {
-        navigateToExam()
+    private fun onQuestionClick(item: BaseItem) {
+        navigateToExam(item)
     }
 
     private fun onTheoryClick(item: BaseItem) {
+        navigateToTheory(item)
+    }
+
+    private fun navigateToExam(item: BaseItem) {
+        view?.findNavController()
+            ?.navigate(HomeFragmentDirections.homeToExam(item))
+    }
+
+
+    private fun navigateToTheory(item: BaseItem) {
         view?.findNavController()
             ?.navigate(HomeFragmentDirections.homeToTheory(item))
 
     }
 
-    private fun navigateToExam() {
+    private fun navigateToRoadmap(id: Long) {
         view?.findNavController()
-            ?.navigate(HomeFragmentDirections.homeToExam())
-    }
-
-
-    private fun navigateToCategory() {
-        view?.findNavController()
-            ?.navigate(HomeFragmentDirections.homeToExam())
-
+            ?.navigate(HomeFragmentDirections.homeToRoadmap(id))
     }
     //endregion
 }

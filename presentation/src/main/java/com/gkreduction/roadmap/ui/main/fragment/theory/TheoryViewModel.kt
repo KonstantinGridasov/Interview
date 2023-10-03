@@ -19,7 +19,8 @@ class TheoryViewModel(context: Context, var getListQuestionByItem: GetListQuesti
 
     fun getTheoryByItem(item: BaseItem, id: Long) {
         viewModelScope.launch {
-            getListQuestionByItem.execute(item)
+            val params = GetListQuestionsByItem.Params(item)
+            getListQuestionByItem.execute(params)
                 .let {
                     if (it.isNotEmpty()) {
                         answers = it

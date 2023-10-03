@@ -12,8 +12,6 @@ import com.gkreduction.roadmap.ui.dialog.finish.FinishViewModel
 import com.gkreduction.roadmap.ui.dialog.help.HelpDialog
 import com.gkreduction.roadmap.ui.dialog.help.HelpDialogViewModel
 import com.gkreduction.roadmap.ui.main.MainViewModel
-import com.gkreduction.roadmap.ui.main.fragment.theory.TheoryFragment
-import com.gkreduction.roadmap.ui.main.fragment.theory.TheoryViewModel
 import com.gkreduction.roadmap.ui.main.fragment.exam.ExamFragment
 import com.gkreduction.roadmap.ui.main.fragment.exam.ExamViewModel
 import com.gkreduction.roadmap.ui.main.fragment.home.HomeFragment
@@ -22,6 +20,8 @@ import com.gkreduction.roadmap.ui.main.fragment.list_title.ListTitleFragment
 import com.gkreduction.roadmap.ui.main.fragment.list_title.ListTitleViewModel
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapFragment
 import com.gkreduction.roadmap.ui.main.fragment.roadmap.RoadmapViewModel
+import com.gkreduction.roadmap.ui.main.fragment.theory.TheoryFragment
+import com.gkreduction.roadmap.ui.main.fragment.theory.TheoryViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -81,11 +81,6 @@ abstract class MainModule {
 
 
         @Provides
-        @MainScope
-        fun providesGetRandomQuestion(service: DbRepositoryImpl) = GetRandomQuestion(service)
-
-
-        @Provides
         fun provideViewModelFactory(
             app: Application,
             updateRoadmapsUseCase: UpdateRoadmapsUseCase,
@@ -94,7 +89,6 @@ abstract class MainModule {
             getRoadmapByIdUseCase: GetRoadmapByIdUseCase,
             getListQuestionByItem: GetListQuestionsByItem,
             getQuestionById: GetQuestionById,
-            getRandomQuestion: GetRandomQuestion
         ): ViewModelProvider.Factory {
             return object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
@@ -105,7 +99,7 @@ abstract class MainModule {
                     return when {
                         modelClass.isAssignableFrom(ExamViewModel::class.java) ->
                             ExamViewModel(
-                                app, getRandomQuestion, getQuestionById
+                                app, getQuestionById, getListQuestionByItem
                             ) as T
                         modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                             HomeViewModel(

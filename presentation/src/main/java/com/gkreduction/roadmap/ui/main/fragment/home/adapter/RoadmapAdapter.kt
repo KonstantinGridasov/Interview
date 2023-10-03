@@ -11,9 +11,9 @@ import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ItemRoadmapBinding
 
 class RoadmapAdapter(
-    var onRoadmapClick: (id: Long) -> Unit,
+    var onRoadmapClick: (item: BaseItem) -> Unit,
     var onTheoryClick: (item: BaseItem) -> Unit,
-    var onQuestionClick: (id: Long) -> Unit
+    var onQuestionClick: (item: BaseItem) -> Unit
 ) : RecyclerView.Adapter<RoadmapAdapter.ViewHolder>() {
 
     private var items: List<Roadmap> = emptyList()
@@ -35,9 +35,9 @@ class RoadmapAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleRoadmap.text = items[position].name
 
-        holder.binding.subItemRoadmap.setOnClickListener { onRoadmapClick.invoke(items[position].id) }
+        holder.binding.subItemRoadmap.setOnClickListener { onRoadmapClick.invoke(items[position]) }
         holder.binding.subItemTheory.setOnClickListener { onTheoryClick.invoke(items[position]) }
-        holder.binding.subItemQuestion.setOnClickListener { onQuestionClick.invoke(items[position].id) }
+        holder.binding.subItemQuestion.setOnClickListener { onQuestionClick.invoke(items[position]) }
     }
 
     @SuppressLint("NotifyDataSetChanged")

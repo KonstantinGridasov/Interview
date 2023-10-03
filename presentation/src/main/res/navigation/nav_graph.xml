@@ -13,7 +13,13 @@
 
         <action
             android:id="@+id/home_to_exam"
-            app:destination="@id/examFragment" />
+            app:destination="@id/examFragment">
+
+            <argument
+                android:name="item"
+                app:argType="com.gkreduction.domain.entity.BaseItem" />
+
+        </action>
 
         <action
             android:id="@+id/home_to_roadmap"
@@ -50,7 +56,9 @@
         android:id="@+id/examFragment"
         android:name="com.gkreduction.roadmap.ui.main.fragment.exam.ExamFragment"
         tools:layout="@layout/fragment_exam">
-
+        <argument
+            android:name="item"
+            app:argType="com.gkreduction.domain.entity.BaseItem" />
     </fragment>
     <fragment
         android:id="@+id/roadmapFragment"
@@ -63,6 +71,15 @@
         <action
             android:id="@+id/roadmap_to_theory"
             app:destination="@id/theoryFragment">
+            <argument
+                android:name="item"
+                app:argType="com.gkreduction.domain.entity.BaseItem" />
+
+        </action>
+
+        <action
+            android:id="@+id/roadmap_to_exam"
+            app:destination="@id/examFragment">
             <argument
                 android:name="item"
                 app:argType="com.gkreduction.domain.entity.BaseItem" />

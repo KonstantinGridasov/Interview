@@ -88,7 +88,8 @@ class RoadmapFragment : BaseFragment<RoadmapViewModel>(
     }
 
     private fun navigateToExam(item: BaseItem) {
-
+        view?.findNavController()
+            ?.navigate(RoadmapFragmentDirections.roadmapToExam(item))
     }
 
     private fun navigateToTheory(item: BaseItem) {

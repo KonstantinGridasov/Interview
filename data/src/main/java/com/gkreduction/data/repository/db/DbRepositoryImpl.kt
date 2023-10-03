@@ -33,12 +33,26 @@ class DbRepositoryImpl(
         return transformFullRoadmapDB(roadmapDao.getFullRoadmap(id))
     }
 
-    override suspend fun getQuestionByItem(item: BaseItem?): List<QuestionAnswer> {
+    override suspend fun getQuestionByItem(
+        item: BaseItem?,
+        random: Boolean, size: Int
+    ): List<QuestionAnswer> {
         return when (item) {
-            is Roadmap -> mapperQAWithRoadmapToModel(qaDao.getQuestionByRoadmapId(item.id))
-            is Section -> mapperQAWithSectionToModel(qaDao.getQuestionBySectionId(item.id))
-            is Topic -> mapperQAWithTopicToModel(qaDao.getQuestionByTopicId(item.id))
-            is Subtopic -> mapperQAWithSubTopicToModel(qaDao.getQuestionBySubTopicTopicId(item.id))
+            is Roadmap -> mapperQAWithRoadmapToModel(
+                qaDao.getQuestionByRoadmapId(item.id),
+                random,
+                size
+            )
+            is Section -> mapperQAWithSectionToModel(
+                qaDao.getQuestionBySectionId(item.id),
+                random,
+                size
+            )
+            is Topic -> mapperQAWithTopicToModel(qaDao.getQuestionByTopicId(item.id), random, size)
+            is Subtopic -> mapperQAWithSubTopicToModel(
+                qaDao.getQuestionBySubTopicTopicId(item.id),
+                random, size
+            )
             else -> emptyList()
         }
 
@@ -48,7 +62,4 @@ class DbRepositoryImpl(
         return transformQADbToModel(qaDao.getQuestionById(param))
     }
 
-    override suspend fun getRandomQuestion(i: Int): List<QuestionAnswer> {
-        return transformQAListDbToModel(qaDao.getRandomQuestion(i))
-    }
 }
