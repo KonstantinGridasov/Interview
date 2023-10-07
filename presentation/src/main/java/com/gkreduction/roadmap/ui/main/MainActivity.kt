@@ -58,8 +58,18 @@ class MainActivity : DaggerAppCompatActivity() {
         dialog.show(supportFragmentManager, "")
     }
 
-    fun showDialogFinish(status: Boolean, listener: () -> Unit) {
-        val dialog = FinishDialog().setParams(status, listener)
+
+    fun onBack() {
+        navController.navigateUp()
+    }
+
+    fun showDialogFinish(status: Boolean, listenerFinish: () -> Unit, listenerRestart: () -> Unit) {
+        val dialog =
+            FinishDialog().setParams(
+                status,
+                listenerFinish = listenerFinish,
+                listenerRestart = listenerRestart
+            )
         dialog.show(supportFragmentManager, "")
     }
 

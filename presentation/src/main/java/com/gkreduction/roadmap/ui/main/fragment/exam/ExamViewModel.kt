@@ -37,7 +37,7 @@ class ExamViewModel(
 
     private fun getQuestionsByItem() {
         if (qa.isEmpty()) {
-            val size = (10..20).random()
+            val size = (50..70).random()
             val params = GetListQuestionsByItem.Params(item, size = size, random = true)
             viewModelScope.launch {
                 getListQuestionByItem.execute(params)

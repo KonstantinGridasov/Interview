@@ -85,7 +85,15 @@ class ExamFragment :
     }
 
     private fun showDialogFinish(status: Boolean) {
-        (activity as? MainActivity)?.showDialogFinish(status) { viewModel?.clearQuestion() }
+        (activity as? MainActivity)?.showDialogFinish(
+            status,
+            listenerFinish = { closeExam() },
+            listenerRestart = { viewModel?.clearQuestion() }
+        )
+    }
+
+    private fun closeExam() {
+        (activity as? MainActivity)?.onBack()
     }
 }
 
