@@ -8,7 +8,12 @@ class ApiConstants {
 //          const val GET_QUESTION = "api/get_question"
 
         //TERMUX
-        const val API_MY_SERVER = "http://127.0.0.1:8000/"
+//        const val API_MY_SERVER = "http://127.0.0.1:8000/"
+//        const val GET_ROADMAPS = "api/get_roadmaps"
+//        const val GET_QUESTION = "api/get_question"
+
+        //MacBook
+        const val API_MY_SERVER = "http://192.168.31.59:8000/"
         const val GET_ROADMAPS = "api/get_roadmaps"
         const val GET_QUESTION = "api/get_question"
 

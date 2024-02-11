@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gkreduction.domain.entity.BaseItem
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.domain.usecase.GetListQuestionsByItem
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
@@ -17,7 +18,7 @@ class TheoryViewModel(context: Context, var getListQuestionByItem: GetListQuesti
     var answer = MutableLiveData<QuestionAnswer>()
     var position: Int = 0
 
-    fun getTheoryByItem(item: BaseItem, id: Long) {
+    fun getTheoryByItem(item: ItemRoadmap, id: Long) {
         viewModelScope.launch {
             val params = GetListQuestionsByItem.Params(item)
             getListQuestionByItem.execute(params)

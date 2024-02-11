@@ -1,50 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_5gkdp"
-        android:layout_marginTop="@dimen/_5gkdp"
-        android:layout_marginEnd="@dimen/_5gkdp"
-        android:background="?colorPrimary"
-        app:cardCornerRadius="@dimen/_5gkdp">
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_5gkdp"
+            android:background="@drawable/background_rounded_bottom" />
 
         <LinearLayout
             android:id="@+id/root_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5gkdp"
+            android:background="@drawable/background_rounded_top"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/title_section"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|top"
-                android:layout_marginStart="@dimen/_2gkdp"
+                android:layout_marginStart="@dimen/_5gkdp"
                 android:layout_marginTop="@dimen/_2gkdp"
+                android:layout_marginEnd="@dimen/_5gkdp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/color_name_section"
                 android:textSize="@dimen/_10gkdp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_topics"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5gkdp"
-                android:layout_marginTop="@dimen/_2gkdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_topic" />
+
         </LinearLayout>
+    </LinearLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
 </layout>

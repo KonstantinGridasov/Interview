@@ -2,7 +2,7 @@ package com.gkreduction.roadmap.ui.main.fragment.home
 
 import android.view.View
 import androidx.navigation.findNavController
-import com.gkreduction.domain.entity.BaseItem
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentHomeBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
@@ -53,25 +53,25 @@ class HomeFragment :
     }
     //region Navigate
 
-    private fun onRoadmapClick(item: BaseItem) {
+    private fun onRoadmapClick(item: ItemRoadmap) {
         navigateToRoadmap(item.id)
     }
 
-    private fun onQuestionClick(item: BaseItem) {
+    private fun onQuestionClick(item: ItemRoadmap) {
         navigateToExam(item)
     }
 
-    private fun onTheoryClick(item: BaseItem) {
+    private fun onTheoryClick(item: ItemRoadmap) {
         navigateToTheory(item)
     }
 
-    private fun navigateToExam(item: BaseItem) {
+    private fun navigateToExam(item: ItemRoadmap) {
         view?.findNavController()
             ?.navigate(HomeFragmentDirections.homeToExam(item))
     }
 
 
-    private fun navigateToTheory(item: BaseItem) {
+    private fun navigateToTheory(item: ItemRoadmap) {
         view?.findNavController()
             ?.navigate(HomeFragmentDirections.homeToTheory(item))
 

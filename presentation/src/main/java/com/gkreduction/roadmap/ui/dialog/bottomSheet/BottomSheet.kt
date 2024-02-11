@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.databinding.DataBindingUtil
 import com.gkreduction.domain.entity.BaseItem
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.DialogBottomBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -16,7 +17,7 @@ class BottomSheet : BottomSheetDialogFragment() {
 
     lateinit var binding: DialogBottomBinding
 
-    private var baseItem: BaseItem? = null
+    private var baseItem: ItemRoadmap? = null
     private var onChooseList = {}
     private var onChooseTheory = {}
     private var onChooseExam = {}
@@ -57,7 +58,7 @@ class BottomSheet : BottomSheetDialogFragment() {
     }
 
     fun setParams(
-        item: BaseItem,
+        item: ItemRoadmap,
         onChooseList: () -> Unit,
         onChooseTheory: () -> Unit,
         onChooseExam: () -> Unit

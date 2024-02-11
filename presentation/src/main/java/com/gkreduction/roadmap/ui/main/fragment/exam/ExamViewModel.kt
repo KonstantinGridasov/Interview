@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.gkreduction.domain.entity.BaseItem
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.domain.usecase.GetListQuestionsByItem
 import com.gkreduction.domain.usecase.GetQuestionById
@@ -17,7 +17,7 @@ class ExamViewModel(
     var getListQuestionByItem: GetListQuestionsByItem
 ) :
     BaseAndroidViewModel(context.applicationContext as Application) {
-    lateinit var item: BaseItem
+    lateinit var item: ItemRoadmap
     private var qa = ArrayList<QuestionAnswer>()
     private var sizeQuestion = MutableLiveData<Int>()
     private var activePosition: Int = -1
@@ -30,7 +30,7 @@ class ExamViewModel(
     var onBad = MutableLiveData<Int>()
     var statusFinish = MutableLiveData<Boolean>()
 
-    fun updateItem(item: BaseItem) {
+    fun updateItem(item: ItemRoadmap) {
         this.item = item
         clearQuestion()
     }

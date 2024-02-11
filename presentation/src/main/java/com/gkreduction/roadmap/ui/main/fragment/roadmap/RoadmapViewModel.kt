@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.domain.entity.Roadmap
 import com.gkreduction.domain.usecase.GetRoadmapByIdUseCase
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
@@ -15,13 +16,14 @@ class RoadmapViewModel(
 ) :
     BaseAndroidViewModel(context.applicationContext as Application) {
     var roadmap = MutableLiveData<Roadmap>()
+    var list = MutableLiveData<List<ItemRoadmap>>()
 
 
     fun getRoadmapFull(id: Long) {
         viewModelScope.launch {
             getRoadmapByIdUseCase.execute(id)
                 .let {
-                    roadmap.value = it
+                    list.value = it
                 }
         }
     }

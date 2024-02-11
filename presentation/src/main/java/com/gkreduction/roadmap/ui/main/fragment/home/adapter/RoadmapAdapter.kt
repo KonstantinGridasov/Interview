@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.gkreduction.domain.entity.BaseItem
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.domain.entity.Roadmap
+import com.gkreduction.domain.entity.TypeItem
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.ItemRoadmapBinding
 
 class RoadmapAdapter(
-    var onRoadmapClick: (item: BaseItem) -> Unit,
-    var onTheoryClick: (item: BaseItem) -> Unit,
-    var onQuestionClick: (item: BaseItem) -> Unit
+    var onRoadmapClick: (item: ItemRoadmap) -> Unit,
+    var onTheoryClick: (item: ItemRoadmap) -> Unit,
+    var onQuestionClick: (item: ItemRoadmap) -> Unit
 ) : RecyclerView.Adapter<RoadmapAdapter.ViewHolder>() {
 
     private var items: List<Roadmap> = emptyList()
@@ -35,9 +36,23 @@ class RoadmapAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleRoadmap.text = items[position].name
 
-        holder.binding.subItemRoadmap.setOnClickListener { onRoadmapClick.invoke(items[position]) }
-        holder.binding.subItemTheory.setOnClickListener { onTheoryClick.invoke(items[position]) }
-        holder.binding.subItemQuestion.setOnClickListener { onQuestionClick.invoke(items[position]) }
+        holder.binding.subItemRoadmap.setOnClickListener {
+            onRoadmapClick.invoke(
+                getItemRoadmap(items[position])
+            )
+        }
+        holder.binding.subItemTheory.setOnClickListener {
+            onTheoryClick.invoke(
+                getItemRoadmap(items[position])
+            )
+        }
+        holder.binding.subItemQuestion.setOnClickListener {
+            onQuestionClick.invoke(
+                getItemRoadmap(
+                    items[position]
+                )
+            )
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -46,5 +61,8 @@ class RoadmapAdapter(
         notifyDataSetChanged()
     }
 
+    private fun getItemRoadmap(roadmap: Roadmap): ItemRoadmap {
+        return ItemRoadmap(roadmap.name, roadmap.id, TypeItem.ROADMAP)
+    }
 
 }

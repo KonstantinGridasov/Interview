@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.gkreduction.domain.entity.BaseItem
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.domain.entity.QuestionAnswer
 import com.gkreduction.domain.usecase.GetListQuestionsByItem
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
@@ -18,7 +18,7 @@ class ListTitleViewModel(
     var roadmap = MutableLiveData<List<QuestionAnswer>>()
 
 
-    fun getQuestionsById(item: BaseItem) {
+    fun getQuestionsById(item: ItemRoadmap) {
         viewModelScope.launch {
             val params = GetListQuestionsByItem.Params(item)
             getListQuestionByItem.execute(params)

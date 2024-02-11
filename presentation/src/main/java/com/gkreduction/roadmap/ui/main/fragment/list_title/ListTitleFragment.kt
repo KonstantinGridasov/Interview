@@ -2,6 +2,7 @@ package com.gkreduction.roadmap.ui.main.fragment.list_title
 
 import androidx.navigation.findNavController
 import com.gkreduction.domain.entity.BaseItem
+import com.gkreduction.domain.entity.ItemRoadmap
 import com.gkreduction.roadmap.R
 import com.gkreduction.roadmap.databinding.FragmentListTitleBinding
 import com.gkreduction.roadmap.ui.base.BaseFragment
@@ -15,7 +16,8 @@ class ListTitleFragment : BaseFragment<ListTitleViewModel>(
     ListTitleViewModel::class.java
 ), OnTitleItemListener {
     lateinit var adapter: ListTitleAdapter
-    private lateinit var item: BaseItem
+    private lateinit var item: ItemRoadmap
+
     override fun onStart() {
         super.onStart()
         item = ListTitleFragmentArgs.fromBundle(requireArguments()).item
