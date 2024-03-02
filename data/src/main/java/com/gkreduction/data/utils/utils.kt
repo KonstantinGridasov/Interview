@@ -24,6 +24,11 @@ fun randomWithSize(
     } else
         result.addAll(list)
 
+    if (random)
+        result.shuffle()
+    else
+        result.sortBy { it.position }
+
     return result
 
 

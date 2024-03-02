@@ -77,6 +77,10 @@ class SectionAdapter(
             TypeItem.SUBTOPIC -> {
                 (holder as ViewHolderSubTopic).binding.titleSubtopic.text =
                     getSubTopicText(position)
+
+                holder.binding.viewBottom.visibility = if (position == items.size - 1)
+                    VISIBLE else GONE
+
                 holder.binding.titleSubtopic.setOnClickListener {
                     clickListener.invoke(items[position])
                 }

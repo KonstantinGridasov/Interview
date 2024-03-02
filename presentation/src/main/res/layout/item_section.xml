@@ -33,6 +33,7 @@
                 android:layout_marginStart="@dimen/_5gkdp"
                 android:layout_marginTop="@dimen/_2gkdp"
                 android:layout_marginEnd="@dimen/_5gkdp"
+                android:layout_marginBottom="@dimen/_3gkdp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/color_name_section"
