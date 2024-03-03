@@ -1,5 +1,6 @@
 package com.gkreduction.roadmap.ui.main.fragment.home
 
+import android.util.Log
 import android.view.View
 import androidx.navigation.findNavController
 import com.gkreduction.domain.entity.ItemRoadmap
@@ -27,8 +28,8 @@ class HomeFragment :
 
     override fun onClick(p0: View?) {
         when (p0) {
-            (binding as FragmentHomeBinding).subItemText -> viewModel?.fetchRoadmaps()
-            (binding as FragmentHomeBinding).subItemQuestion -> viewModel?.fetchQA()
+            (binding as FragmentHomeBinding).subItemText -> viewModel?.update { viewModel?.fetchRoadmaps() }
+            (binding as FragmentHomeBinding).subItemQuestion -> viewModel?.update { viewModel?.fetchQA() }
         }
     }
 
@@ -47,6 +48,11 @@ class HomeFragment :
         activity?.let {
             viewModel?.roadmaps?.observe(it) { items ->
                 roadmapAdapter?.updateItems(items)
+            }
+        }
+        activity?.let {
+            viewModel?.availableServer?.observe(it) { status ->
+                if (status) viewModel?.command?.invoke()
             }
         }
 

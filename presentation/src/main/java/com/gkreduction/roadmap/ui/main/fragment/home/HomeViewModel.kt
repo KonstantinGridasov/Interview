@@ -9,6 +9,9 @@ import com.gkreduction.domain.usecase.GetRoadmapsUseCase
 import com.gkreduction.domain.usecase.UpdateQaUseCase
 import com.gkreduction.domain.usecase.UpdateRoadmapsUseCase
 import com.gkreduction.roadmap.utils.BaseAndroidViewModel
+import com.gkreduction.roadmap.utils.pingServer
+import com.gkreduction.roadmap.utils.statusNetwork
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -20,6 +23,23 @@ class HomeViewModel(
     BaseAndroidViewModel(context.applicationContext as Application) {
 
     var roadmaps = MutableLiveData<List<Roadmap>>()
+
+    var availableServer = MutableLiveData<Boolean>()
+    var command: () -> Unit = {}
+
+    private fun serverIsAvailable() {
+        viewModelScope.launch(Dispatchers.IO) {
+            availableServer.postValue(statusNetwork(context) && pingServer())
+        }
+    }
+
+
+    fun update(unit: () -> Unit) {
+        command = unit
+        viewModelScope.launch {
+            serverIsAvailable()
+        }
+    }
 
     fun getRoadmapsFromDb() {
         viewModelScope.launch {
@@ -38,6 +58,7 @@ class HomeViewModel(
         }
     }
 
+
     fun fetchQA() {
         viewModelScope.launch {
             updateQaUseCase.execute()
@@ -45,5 +66,6 @@ class HomeViewModel(
 
                 }
         }
+
     }
 }
